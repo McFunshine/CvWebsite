@@ -1,0 +1,16 @@
+{% extends "_base.html" %}
+
+{% block content %}
+<article class="project">
+    <header class="project-header">
+        <h1>{% block project_title %}{% endblock %}</h1>
+        <div class="project-meta">{% block project_meta %}{% endblock %}</div>
+    </header>
+
+    <div class="project-content">
+        {% block project_content %}{% endblock %}
+    </div>
+
+    {% block project_footer %}{% endblock %}
+</article>
+{% endblock %} 

@@ -1,51 +1,312 @@
-:root {
-    --primary-color: #000;
-    --text-color: #fff;
-    --background-color: #000;
-}
+/* Navigation Styles */
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
+/* Base body styles */
 body {
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    background-color: var(--background-color);
-    color: var(--text-color);
-    line-height: 1.6;
+    font-family: 'Abel', Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    letter-spacing: 0.05em;
+    line-height: 2em;
+    text-transform: none;
+    color: rgba(255, 255, 255, 0.5);
+    background-color: #1b1c1d;
+    padding-top: 60px;
 }
 
+/* Navigation container */
 .nav {
-    padding: 2rem;
-    display: flex;
-    justify-content: center;
+    background-color: #1b1c1d;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    background-color: rgba(27, 28, 29, 0.95);
 }
 
 .nav-links {
+    font-family: 'Abel', Arial, Helvetica, sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    letter-spacing: 0.05em;
+    text-transform: capitalize;
+    white-space: nowrap;
+    line-height: 1em;
     display: flex;
-    gap: 2rem;
+    align-items: center;
+    justify-content: center;
+    height: 60px;
+    padding: 0 1em;
 }
 
+/* Navigation items */
 .nav-link {
-    color: var(--text-color);
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 0.618em;
+    padding: 0.618em 0;
+    color: #dbdbdb;
+    transition: color 170ms ease-in-out, background-color 170ms ease-in-out;
     text-decoration: none;
-    font-size: 1.1rem;
-    transition: opacity 0.2s ease;
 }
 
 .nav-link:hover {
-    opacity: 0.8;
+    color: #ffffff;
 }
 
+/* Link styles */
+a {
+    color: inherit;
+    text-decoration: none;
+    background-color: transparent;
+    transition: color 170ms ease-in-out;
+}
+
+a:hover {
+    color: #ffffff;
+}
+
+/* Content area */
 .content {
+    padding: 2em;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 2rem;
 }
 
-.welcome {
+/* Hero section */
+.hero {
     text-align: center;
-    padding: 4rem 0;
+    padding: 4em 0;
+    margin-bottom: 4em;
+}
+
+.hero h1 {
+    font-size: 3em;
+    color: #ffffff;
+    margin-bottom: 0.5em;
+    line-height: 1.2;
+}
+
+.hero .subheadline {
+    font-size: 1.2em;
+    max-width: 800px;
+    margin: 0 auto 2em;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* Button styles */
+.button {
+    display: inline-block;
+    padding: 0.8em 1.6em;
+    border-radius: 4px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    transition: all 170ms ease-in-out;
+    margin: 0 0.5em;
+}
+
+.button.primary {
+    background-color: #4a90e2;
+    color: #ffffff;
+}
+
+.button.primary:hover {
+    background-color: #357abd;
+}
+
+.button.secondary {
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #ffffff;
+}
+
+.button.secondary:hover {
+    border-color: #ffffff;
+}
+
+/* Section styles */
+section {
+    margin-bottom: 6em;
+}
+
+section h2 {
+    font-size: 2em;
+    color: #ffffff;
+    margin-bottom: 1em;
+    text-align: center;
+}
+
+/* About section */
+.achievements {
+    list-style: none;
+    padding: 0;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.achievements li {
+    margin-bottom: 1em;
+    padding-left: 1.5em;
+    position: relative;
+}
+
+.achievements li:before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: #4a90e2;
+}
+
+/* Portfolio section */
+.carousel-wrapper {
+    position: relative;
+    max-width: 1600px;
+    margin: 0 auto 2em;
+    padding: 0 100px; /* Space for arrows */
+}
+
+.carousel-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.project-carousel {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    gap: 2em;
+}
+
+.project-card {
+    width: calc((100% - 4em) / 3); /* Width for exactly 3 cards */
+    flex: 0 0 auto; /* Don't allow flex to adjust the width */
+    background: rgba(255, 255, 255, 0.05);
+    padding: 2em;
+    border-radius: 8px;
+    transition: transform 170ms ease-in-out;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+}
+
+.project-card h3 {
+    color: #ffffff;
+    margin-bottom: 1em;
+}
+
+.carousel-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(74, 144, 226, 0.2);
+    border: none;
+    color: #ffffff;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 2;
+    transition: all 170ms ease-in-out;
+    font-size: 1.5em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carousel-button:hover:not(:disabled) {
+    background: rgba(74, 144, 226, 0.4);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-button:disabled {
+    background: rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.3);
+    cursor: not-allowed;
+}
+
+.carousel-button.prev {
+    left: 0;
+}
+
+.carousel-button.next {
+    right: 0;
+}
+
+.carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 0.5em;
+    margin-bottom: 2em;
+}
+
+.carousel-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+    transition: background-color 170ms ease-in-out;
+}
+
+.carousel-dot.active {
+    background: #4a90e2;
+}
+
+/* Why Me section */
+.qualities {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2em;
+    text-align: center;
+}
+
+.quality h3 {
+    color: #ffffff;
+    margin-bottom: 0.5em;
+}
+
+/* Connect section */
+.connect {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 4em 2em;
+    border-radius: 8px;
+}
+
+/* Time limited section */
+.time-limited {
+    text-align: center;
+    padding: 2em;
+    background: linear-gradient(45deg, #4a90e2, #357abd);
+    border-radius: 8px;
+    margin-bottom: 0;
+}
+
+.time-limited h2,
+.time-limited p {
+    color: #ffffff;
+}
+
+/* Text link styles */
+.text-link {
+    color: #4a90e2;
+    display: inline-flex;
+    align-items: center;
+}
+
+.text-link:hover {
+    color: #357abd;
+}
+
+/* CTA buttons container */
+.cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+    flex-wrap: wrap;
 } 
