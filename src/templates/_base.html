@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-links">
+            <a href="/" class="nav-link">Home</a>
+            <a href="/projects/podmorph.html" class="nav-link">Podmorph</a>
+            <a href="/projects/vvz-app.html" class="nav-link">VVZ App</a>
+            <a href="/projects/khonraad.html" class="nav-link">Khonraad</a>
+            <a href="/projects/jewelsuite.html" class="nav-link">JewelSuite</a>
+            <a href="/projects.html" class="nav-link">The Rest</a>
+            <a href="/contact.html" class="nav-link">Contact</a>
+        </div>
+    </nav>
+
+    <main class="content">
+        {% block content %}{% endblock %}
+    </main>
+
+    <script src="/static/js/main.js"></script>
+</body>
+</html> 
