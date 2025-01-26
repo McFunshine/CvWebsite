@@ -2,6 +2,19 @@
 document.addEventListener('DOMContentLoaded', () => {
     console.log('Site loaded');
 
+    // Format the job hunt end date
+    const dateElement = document.querySelector('[data-auto-update="job-hunt-end"]');
+    if (dateElement) {
+        const date = new Date(dateElement.textContent);
+        const formattedDate = new Intl.DateTimeFormat('en-US', {
+            weekday: 'long',
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        }).format(date);
+        dateElement.textContent = formattedDate;
+    }
+
     // Carousel functionality
     const carousel = document.querySelector('.project-carousel');
     const cards = Array.from(carousel.querySelectorAll('.project-card'));

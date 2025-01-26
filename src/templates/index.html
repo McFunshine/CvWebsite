@@ -4,11 +4,12 @@
 
 {% block content %}
 <div class="hero">
-    <h1>Unlock Top-Tier Development Expertise</h1>
+    <h1 class="name">Paul Spencer</h1>
+    <h2 class="hero-title">Unlock Top-Tier Development Expertise</h2>
     <p class="subheadline">With over three decades of experience and a proven track record in software engineering, I bring innovation, precision, and leadership to every project I undertake.</p>
     <div class="cta-buttons">
-        <a href="/projects.html" class="button primary">Explore My Work</a>
-        <a href="/static/files/paul-spencer-cv.pdf" class="button secondary">Download My CV</a>
+        <a href="#portfolio" class="button primary">Explore My Work</a>
+        <a href="/cvs.html" class="button secondary">Download My CV</a>
     </div>
 </div>
 
@@ -23,7 +24,7 @@
     <a href="/about.html" class="text-link">Learn More About My Journey →</a>
 </section>
 
-<section class="portfolio">
+<section id="portfolio" class="portfolio">
     <h2>Proven Impact Across Industries</h2>
     <div class="carousel-wrapper">
         <button class="carousel-button prev" aria-label="Previous project">❮</button>
@@ -33,6 +34,11 @@
                     <h3>Podmorph</h3>
                     <p>Designed and developed an AI-powered platform for podcast professionals, integrating services like OpenAI and Groq.</p>
                     <a href="/projects/podmorph.html" class="text-link">Learn More →</a>
+                </div>
+                <div class="project-card">
+                    <h3>VVZ App</h3>
+                    <p>Built a comprehensive mobile application for course selection and management at ETH Zürich, featuring real-time integration and intelligent scheduling.</p>
+                    <a href="/projects/vvz-app.html" class="text-link">Learn More →</a>
                 </div>
                 <div class="project-card">
                     <h3>Khonraad</h3>
@@ -45,11 +51,6 @@
                     <a href="/projects/jewelsuite.html" class="text-link">Learn More →</a>
                 </div>
                 <div class="project-card">
-                    <h3>VVZ App</h3>
-                    <p>Built a comprehensive mobile application for course selection and management at ETH Zürich, featuring real-time integration and intelligent scheduling.</p>
-                    <a href="/projects/vvz-app.html" class="text-link">Learn More →</a>
-                </div>
-                <div class="project-card">
                     <h3>Language Engineering</h3>
                     <p>Advanced research and development in programming language design, focusing on type systems, compiler optimization, and language tooling.</p>
                     <a href="/projects/language-engineering.html" class="text-link">Learn More →</a>
@@ -58,7 +59,6 @@
         </div>
         <button class="carousel-button next" aria-label="Next project">❯</button>
     </div>
-    <a href="/projects.html" class="button secondary">Explore My Portfolio</a>
 </section>
 
 <section class="why-me">
@@ -83,7 +83,7 @@
     <h2>Start Your Next Chapter with Confidence</h2>
     <p>I'm currently open to new opportunities, and I'd love to discuss how my expertise can contribute to your team's success.</p>
     <div class="cta-buttons">
-        <a href="/static/files/paul-spencer-cv.pdf" class="button primary">Download CV</a>
+        <a href="/cvs.html" class="button primary">Download CV</a>
         <a href="/contact.html" class="button secondary">Contact Me</a>
     </div>
 </section>
@@ -91,6 +91,16 @@
 <section class="time-limited">
     <h2>Don't Miss Out on Top Talent</h2>
     <p>I'm actively seeking my next impactful role. Let's connect before this opportunity passes.</p>
+    <div class="stats-container">
+        <div class="deadline-date">
+            <span class="date-label">Job Hunt Scheduled to End</span>
+            <span class="date" data-auto-update="job-hunt-end">2024-02-17</span>
+        </div>
+        <div class="deadline-date offers">
+            <span class="date-label">Job Offers So Far</span>
+            <span class="date" data-auto-update="job-offers-count">2</span>
+        </div>
+    </div>
     <a href="/contact.html" class="button primary">Get in Touch Today</a>
 </section>
 {% endblock %} 

@@ -1,0 +1,71 @@
+{% extends "_base.html" %}
+
+{% block title %}CVs - Paul Spencer{% endblock %}
+
+{% block content %}
+<div class="cvs-section">
+    <h1>Curriculum Vitae</h1>
+    <div class="cv-options">
+        <div class="cv-card">
+            <h2>Full CV</h2>
+            <p>Comprehensive overview of my three decades in software engineering, including detailed project experiences and technical expertise.</p>
+            <a href="/static/files/paul-spencer-cv.pdf" class="button primary">Download Full CV</a>
+        </div>
+        
+        <div class="cv-card">
+            <h2>Technical CV</h2>
+            <p>Focused on technical skills, programming languages, and system architectures, ideal for technical roles.</p>
+            <a href="/static/files/paul-spencer-technical-cv.pdf" class="button primary">Download Technical CV</a>
+        </div>
+        
+        <div class="cv-card">
+            <h2>Executive Summary</h2>
+            <p>Two-page summary highlighting key achievements and leadership experience.</p>
+            <a href="/static/files/paul-spencer-executive-cv.pdf" class="button primary">Download Summary</a>
+        </div>
+    </div>
+</div>
+
+<style>
+.cvs-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2em;
+}
+
+.cvs-section h1 {
+    text-align: center;
+    color: #ffffff;
+    margin-bottom: 2em;
+    font-size: 2.5em;
+}
+
+.cv-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2em;
+}
+
+.cv-card {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 2em;
+    border-radius: 8px;
+    text-align: center;
+    transition: transform 170ms ease-in-out;
+}
+
+.cv-card:hover {
+    transform: translateY(-5px);
+}
+
+.cv-card h2 {
+    color: #ffffff;
+    margin-bottom: 1em;
+}
+
+.cv-card p {
+    margin-bottom: 2em;
+    color: rgba(255, 255, 255, 0.7);
+}
+</style>
+{% endblock %} 

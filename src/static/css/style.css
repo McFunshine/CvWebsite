@@ -9,7 +9,7 @@ body {
     text-transform: none;
     color: rgba(255, 255, 255, 0.5);
     background-color: #1b1c1d;
-    padding-top: 60px;
+    padding-top: 60px; /* Keep this to account for fixed nav */
 }
 
 /* Navigation container */
@@ -80,12 +80,39 @@ a:hover {
 /* Hero section */
 .hero {
     text-align: center;
-    padding: 4em 0;
+    padding: 0.5em 0 4em;
     margin-bottom: 4em;
 }
 
-.hero h1 {
-    font-size: 3em;
+.hero .name {
+    font-size: 5em;
+    background: linear-gradient(45deg, #4a90e2, #357abd, #4a90e2);
+    background-size: 200% auto;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: gradient 3s ease infinite;
+    margin-bottom: 0.2em;
+    line-height: 1;
+    letter-spacing: 0.02em;
+    text-shadow: 0 0 30px rgba(74, 144, 226, 0.3);
+    font-weight: bold;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.hero .hero-title {
+    font-size: 2.5em;
     color: #ffffff;
     margin-bottom: 0.5em;
     line-height: 1.2;
@@ -162,6 +189,10 @@ section h2 {
 }
 
 /* Portfolio section */
+#portfolio {
+    scroll-margin-top: 80px; /* Header height (60px) + extra padding (20px) */
+}
+
 .carousel-wrapper {
     position: relative;
     max-width: 1600px;
@@ -281,7 +312,7 @@ section h2 {
 /* Time limited section */
 .time-limited {
     text-align: center;
-    padding: 2em;
+    padding: 3em 2em;
     background: linear-gradient(45deg, #4a90e2, #357abd);
     border-radius: 8px;
     margin-bottom: 0;
@@ -290,6 +321,56 @@ section h2 {
 .time-limited h2,
 .time-limited p {
     color: #ffffff;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.stats-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2em;
+    margin: 2em auto;
+    max-width: 800px;
+}
+
+.deadline-date {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1.5em;
+    border-radius: 8px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.deadline-date.offers {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.date-label {
+    font-size: 0.9em;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.5em;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.date {
+    font-size: 2em;
+    font-weight: bold;
+    color: #ffffff;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+}
+
+[data-auto-update="job-offers-count"] {
+    font-size: 3em;
+}
+
+@media (max-width: 600px) {
+    .stats-container {
+        grid-template-columns: 1fr;
+    }
 }
 
 /* Text link styles */
@@ -309,4 +390,8 @@ section h2 {
     justify-content: center;
     gap: 1em;
     flex-wrap: wrap;
+}
+
+html {
+    scroll-behavior: smooth;
 } 
