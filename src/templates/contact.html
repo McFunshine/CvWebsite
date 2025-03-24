@@ -1,23 +1,342 @@
 {% extends "_base.html" %}
 
-{% block title %}Contact{% endblock %}
+{% block title %}Contact - Paul Spencer{% endblock %}
 
 {% block content %}
-<div class="contact">
-    <h1>Contact</h1>
-    <ul class="contact-links">
-        <li>
-            <span class="platform">email</span>
-            <a href="mailto:your.email@example.com">your.email@example.com</a>
-        </li>
-        <li>
-            <span class="platform">github</span>
-            <a href="https://github.com/yourusername" target="_blank">@yourusername</a>
-        </li>
-        <li>
-            <span class="platform">linkedin</span>
-            <a href="https://linkedin.com/in/yourusername" target="_blank">Philip Spencer</a>
-        </li>
-    </ul>
+<style>
+    .contact-page {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+    }
+
+    .intro h1 {
+        margin-bottom: 2rem;
+    }
+
+    .profile-container {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+        margin-bottom: 1rem;
+        width: 100%;
+    }
+
+    .profile-section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .profile-content {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+        width: 100%;
+    }
+
+    .profile-image {
+        width: 15%;
+        height: auto;
+        min-width: 120px;
+        max-width: 150px;
+    }
+
+    .intro-text {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        min-height: 120px;
+    }
+
+    .social-links {
+        margin-top: 1.5rem;
+    }
+
+    .contact-links {
+        margin-bottom: 3rem;
+    }
+
+    .contact-links ul {
+        list-style: none;
+        padding: 0;
+        display: flex;
+        gap: 1.5rem;
+        justify-content: center;
+    }
+
+    .contact-links a {
+        text-decoration: none;
+        color: #333;
+        font-size: 1.5rem;
+    }
+
+    .contact-links a:hover {
+        color: #666;
+    }
+
+    section {
+        margin-bottom: 4rem;
+    }
+
+    .goals-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        margin-top: 2rem;
+    }
+
+    .goal {
+        padding: 1.5rem;
+        background-color: #f9f9f9;
+        border-radius: 8px;
+    }
+
+    h2 {
+        margin: 2rem 0 1rem;
+    }
+
+    .sqs-svg-icon--list {
+        display: flex;
+        gap: 1.5rem;
+        justify-content: flex-start;
+        margin-top: 1.5rem;
+        width: 100%;
+        padding-left: 2rem;
+    }
+
+    .sqs-svg-icon--wrapper {
+        width: 36px;
+        height: 36px;
+        display: block;
+        background-color: transparent;
+        border: none;
+        border-radius: 50%;
+        padding: 0;
+        transition: all 170ms ease-in-out;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 0 0 2px inset;
+    }
+
+    .sqs-svg-icon--wrapper.github {
+        background-color: #000;
+    }
+
+    .sqs-svg-icon--wrapper div {
+        width: 24px;
+        height: 24px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .sqs-svg-icon--wrapper.github:hover {
+        background-color: #333;
+    }
+
+    .sqs-svg-icon--social {
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
+
+    .sqs-use--icon {
+        fill: #fff;
+        transition: fill 170ms ease-in-out;
+    }
+
+    .sqs-use--mask {
+        fill: transparent;
+    }
+
+    .sqs-svg-icon--wrapper:hover .sqs-use--icon {
+        fill: #fff;
+    }
+
+    .email-fallback {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: #fff;
+        padding: 2rem;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        z-index: 1000;
+        text-align: center;
+        color: #000;
+    }
+
+    .email-fallback.show {
+        display: block;
+    }
+
+    .email-fallback p {
+        margin: 0;
+        font-size: 1.2rem;
+        color: #000;
+    }
+
+    .email-fallback strong {
+        color: #000;
+        font-size: 1.4rem;
+    }
+
+    .email-fallback button {
+        margin-top: 1rem;
+        padding: 0.5rem 1rem;
+        background: #000;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    .email-fallback button:hover {
+        background: #333;
+    }
+</style>
+
+<!-- Email Fallback Modal -->
+<div class="email-fallback" id="emailFallback">
+    <p>You don't have a mail program associated with this browser, so here is my email address:</p>
+    <p><strong>spencerpj@gmail.com</strong></p>
+    <button onclick="hideEmailFallback()">Close</button>
+</div>
+
+<script>
+    function handleEmailClick(event) {
+        event.preventDefault();
+        const emailLink = event.currentTarget;
+        const emailAddress = emailLink.href.replace('mailto:', '');
+        
+        // Try to open email client
+        window.location.href = `mailto:${emailAddress}`;
+        
+        // Show fallback after a short delay
+        setTimeout(() => {
+            showEmailFallback();
+        }, 100);
+    }
+
+    function showEmailFallback() {
+        document.getElementById('emailFallback').classList.add('show');
+    }
+
+    function hideEmailFallback() {
+        document.getElementById('emailFallback').classList.remove('show');
+    }
+
+    // Add click handler to email link
+    document.addEventListener('DOMContentLoaded', function() {
+        const emailLink = document.querySelector('.sqs-svg-icon--wrapper.email');
+        if (emailLink) {
+            emailLink.addEventListener('click', handleEmailClick);
+        }
+    });
+</script>
+
+<!-- SVG Definitions -->
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" style="display:none" data-usage="social-icons-svg">
+    <symbol id="email-icon" viewBox="0 0 64 64">
+        <path d="M17,22v20h30V22H17z M41.1,25L32,32.1L22.9,25H41.1z M20,39V26.6l12,9.3l12-9.3V39H20z"></path>
+    </symbol>
+    <symbol id="email-mask" viewBox="0 0 64 64">
+        <path d="M41.1,25H22.9l9.1,7.1L41.1,25z M44,26.6l-12,9.3l-12-9.3V39h24V26.6z M0,0v64h64V0H0z M47,42H17V22h30V42z"></path>
+    </symbol>
+    <symbol id="linkedin-icon" viewBox="0 0 64 64">
+        <path d="M20.4,44h5.4V26.6h-5.4V44z M23.1,18c-1.7,0-3.1,1.4-3.1,3.1c0,1.7,1.4,3.1,3.1,3.1 c1.7,0,3.1-1.4,3.1-3.1C26.2,19.4,24.8,18,23.1,18z M39.5,26.2c-2.6,0-4.4,1.4-5.1,2.8h-0.1v-2.4h-5.2V44h5.4v-8.6 c0-2.3,0.4-4.5,3.2-4.5c2.8,0,2.8,2.6,2.8,4.6V44H46v-9.5C46,29.8,45,26.2,39.5,26.2z"></path>
+    </symbol>
+    <symbol id="linkedin-mask" viewBox="0 0 64 64">
+        <path d="M0,0v64h64V0H0z M25.8,44h-5.4V26.6h5.4V44z M23.1,24.3c-1.7,0-3.1-1.4-3.1-3.1c0-1.7,1.4-3.1,3.1-3.1 c1.7,0,3.1,1.4,3.1,3.1C26.2,22.9,24.8,24.3,23.1,24.3z M46,44h-5.4v-8.4c0-2,0-4.6-2.8-4.6c-2.8,0-3.2,2.2-3.2,4.5V44h-5.4V26.6 h5.2V29h0.1c0.7-1.4,2.5-2.8,5.1-2.8c5.5,0,6.5,3.6,6.5,8.3V44z"></path>
+    </symbol>
+    <symbol id="github-icon" viewBox="0 0 50 50">
+        <path d="M 46.792969 22.089844 L 27.910156 3.207031 C 27.109375 2.402344 26.054688 2 25 2 C 23.945313 2 22.890625 2.402344 22.089844 3.207031 L 18.355469 6.941406 L 22.976563 11.5625 C 24.511719 10.660156 26.511719 10.855469 27.828125 12.171875 C 29.144531 13.488281 29.335938 15.488281 28.433594 17.019531 L 32.976563 21.5625 C 34.511719 20.660156 36.511719 20.855469 37.828125 22.171875 C 39.390625 23.734375 39.390625 26.265625 37.828125 27.828125 C 36.265625 29.390625 33.734375 29.390625 32.171875 27.828125 C 30.855469 26.511719 30.660156 24.511719 31.5625 22.976563 L 27.019531 18.433594 C 26.695313 18.625 26.355469 18.765625 26 18.855469 L 26 31.140625 C 27.722656 31.585938 29 33.136719 29 35 C 29 37.210938 27.210938 39 25 39 C 22.789063 39 21 37.210938 21 35 C 21 33.136719 22.277344 31.585938 24 31.140625 L 24 18.855469 C 23.332031 18.683594 22.695313 18.351563 22.171875 17.828125 C 20.855469 16.511719 20.664063 14.511719 21.566406 12.980469 L 16.941406 8.355469 L 3.207031 22.089844 C 1.597656 23.695313 1.597656 26.304688 3.207031 27.910156 L 22.089844 46.792969 C 22.890625 47.597656 23.945313 48 25 48 C 26.054688 48 27.109375 47.597656 27.910156 46.792969 L 46.792969 27.910156 C 48.402344 26.304688 48.402344 23.695313 46.792969 22.089844 Z" fill="#fff"/>
+    </symbol>
+    <symbol id="github-mask" viewBox="0 0 50 50">
+        <path d="M 46.792969 22.089844 L 27.910156 3.207031 C 27.109375 2.402344 26.054688 2 25 2 C 23.945313 2 22.890625 2.402344 22.089844 3.207031 L 18.355469 6.941406 L 22.976563 11.5625 C 24.511719 10.660156 26.511719 10.855469 27.828125 12.171875 C 29.144531 13.488281 29.335938 15.488281 28.433594 17.019531 L 32.976563 21.5625 C 34.511719 20.660156 36.511719 20.855469 37.828125 22.171875 C 39.390625 23.734375 39.390625 26.265625 37.828125 27.828125 C 36.265625 29.390625 33.734375 29.390625 32.171875 27.828125 C 30.855469 26.511719 30.660156 24.511719 31.5625 22.976563 L 27.019531 18.433594 C 26.695313 18.625 26.355469 18.765625 26 18.855469 L 26 31.140625 C 27.722656 31.585938 29 33.136719 29 35 C 29 37.210938 27.210938 39 25 39 C 22.789063 39 21 37.210938 21 35 C 21 33.136719 22.277344 31.585938 24 31.140625 L 24 18.855469 C 23.332031 18.683594 22.695313 18.351563 22.171875 17.828125 C 20.855469 16.511719 20.664063 14.511719 21.566406 12.980469 L 16.941406 8.355469 L 3.207031 22.089844 C 1.597656 23.695313 1.597656 26.304688 3.207031 27.910156 L 22.089844 46.792969 C 22.890625 47.597656 23.945313 48 25 48 C 26.054688 48 27.109375 47.597656 27.910156 46.792969 L 46.792969 27.910156 C 48.402344 26.304688 48.402344 23.695313 46.792969 22.089844 Z" fill="transparent"/>
+    </symbol>
+</svg>
+
+<div class="contact-page">
+    <!-- Intro Section -->
+    <section class="intro">
+        <h1>Nice to meet you!</h1>
+        <div class="profile-container">
+            <div class="profile-section">
+                <div class="profile-content">
+                    <img src="/static/img/photogravure.png" alt="Paul Spencer" class="profile-image">
+                    <div class="intro-text">
+                        <p class="tagline">I'm Paul Spencer, a Senior Software Engineer with over three decades of experience crafting elegant solutions to complex problems.</p>
+                    </div>
+                </div>
+                <!-- Contact Links -->
+                <nav class="sqs-svg-icon--list">
+                    <a href="mailto:spencerpj@gmail.com" target="_blank" class="sqs-svg-icon--wrapper email" aria-label="Email">
+                        <div>
+                            <svg class="sqs-svg-icon--social" viewBox="0 0 64 64">
+                                <use class="sqs-use--icon" xlink:href="#email-icon"></use>
+                                <use class="sqs-use--mask" xlink:href="#email-mask"></use>
+                            </svg>
+                        </div>
+                    </a>
+                    <a href="https://www.linkedin.com/in/paul-spencer-4789085/" target="_blank" class="sqs-svg-icon--wrapper linkedin" aria-label="LinkedIn">
+                        <div>
+                            <svg class="sqs-svg-icon--social" viewBox="0 0 64 64">
+                                <use class="sqs-use--icon" xlink:href="#linkedin-icon"></use>
+                                <use class="sqs-use--mask" xlink:href="#linkedin-mask"></use>
+                            </svg>
+                        </div>
+                    </a>
+                    <a href="https://github.com/McFunshine/" target="_blank" class="sqs-svg-icon--wrapper github" aria-label="GitHub">
+                        <div>
+                            <svg class="sqs-svg-icon--social" viewBox="0 0 64 64">
+                                <use class="sqs-use--mask" xlink:href="#github-mask"></use>
+                                <use class="sqs-use--icon" xlink:href="#github-icon"></use>
+                            </svg>
+                        </div>
+                    </a>
+                </nav>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why I Code -->
+    <section class="why-i-code">
+        <h2>Why I Write Code</h2>
+        <p>I write code because it allows me to create solutions that make a real difference in people's lives. Every line of code is an opportunity to solve problems, improve efficiency, and build something meaningful.</p>
+    </section>
+
+    <!-- Who Am I -->
+    <section class="about-me">
+        <h2>Who Am I?</h2>
+        <p>I'm a seasoned software engineer who started programming out of curiosity and turned it into a lifelong passion. Beyond the code, I'm a problem solver who believes in the power of technology to improve lives. I bring both technical expertise and a human-centered approach to every project I undertake.</p>
+    </section>
+
+    <!-- My Goals -->
+    <section class="goals">
+        <h2>My Goals</h2>
+        <div class="goals-grid">
+            <div class="goal">
+                <h3>Impact</h3>
+                <p>Create software that makes a meaningful difference in people's lives.</p>
+            </div>
+            <div class="goal">
+                <h3>Innovation</h3>
+                <p>Push the boundaries of what's possible while maintaining simplicity and usability.</p>
+            </div>
+            <div class="goal">
+                <h3>Excellence</h3>
+                <p>Deliver high-quality solutions that stand the test of time.</p>
+            </div>
+        </div>
+    </section>
 </div>
 {% endblock %} 
