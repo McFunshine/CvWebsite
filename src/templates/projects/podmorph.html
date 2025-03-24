@@ -1,41 +1,109 @@
 {% extends "_project.html" %}
 
-{% block title %}Podmorph - Audio Processing Platform{% endblock %}
+{% block title %}PodMorph - AI-Powered Audio Transformation{% endblock %}
 
-{% block project_title %}Podmorph{% endblock %}
+{% block project_title %}PodMorph{% endblock %}
 
 {% block project_meta %}
-Audio Processing & Podcast Enhancement Platform
+Cross-Platform Media Transformation for Social Platforms
 {% endblock %}
 
 {% block project_content %}
 <h2>Overview</h2>
 <p>
-    Podmorph is an innovative audio processing platform designed to enhance podcast production quality through automated processing and intelligent content analysis.
+    At PodMorph, I led the development of a cross-platform application that transforms podcasts and radio programs into various media formats optimized for social media platforms. Using advanced AI integration, the system automates content repurposing while preserving brand integrity and key messaging across all outputs.
 </p>
+<img src="/static/img/podmorph_landing_page.png" alt="PodMorph Platform Overview" class="project-image">
 
-<h2>Key Features</h2>
-<ul>
-    <li>Automated audio enhancement and noise reduction</li>
-    <li>Content analysis and timestamping</li>
-    <li>Intelligent chapter generation</li>
-    <li>Multi-track processing support</li>
-</ul>
+<h2>Technical Achievements</h2>
 
-<h2>Technologies Used</h2>
-<ul>
-    <li>Python for backend processing</li>
-    <li>React for the web interface</li>
-    <li>TensorFlow for audio analysis</li>
-    <li>WebAssembly for real-time processing</li>
-</ul>
-
-<h2>Development Process</h2>
+<h3>Software Architecture & Cross-Platform Development</h3>
 <p>
-    The development of Podmorph involved extensive research into audio processing algorithms, machine learning models for speech recognition, and efficient ways to handle large audio files in the browser.
+    As Lead Architect, I designed and implemented a comprehensive cross-platform solution:
 </p>
+<ul>
+    <li>Architected and implemented a comprehensive Kotlin Multiplatform (KMP) solution delivering native applications for 7 platforms (iOS, Android, Windows, macOS on both x64 and ARM, Linux on both x64 and ARM)</li>
+    <li>Designed and implemented the UI using Compose Multiplatform, enabling consistent interfaces across all supported platforms</li>
+    <li>Established a robust Model-View-Intent (MVI) architecture for predictable state management and UI interactions</li>
+    <li>Implemented client-server architecture to balance processing requirements between local devices and cloud resources</li>
+    <li>Integrated multiple AI services with fallback mechanisms to ensure service continuity</li>
+</ul>
+<img src="/static/img/transcript_editor.png" alt="Software Architecture" class="project-image">
+<img src="/static/img/programme_descriptions.png" alt="Software Architecture" class="project-image">
+
+<h3>Cloud Infrastructure & API Integration</h3>
+<p>
+    I developed a robust cloud infrastructure to handle complex media processing:
+</p>
+<ul>
+    <li>Designed cloud-based processing workflow using Azure Container Instances and AWS S3 for data storage</li>
+    <li>Implemented PostgreSQL database management with robust data models for user accounts, projects, payments, and content artifacts</li>
+    <li>Orchestrated multiple AI services including Groq, Anthropic Claude, OpenAI, and Google Vertex AI with fallback mechanisms</li>
+    <li>Built optimized media processing pipelines for transcription, summarization, and content generation</li>
+    <li>Created secure API communication using Ktor with proper authentication and error handling</li>
+</ul>
+<img src="/static/img/image_selection.png" alt="Cloud Infrastructure" class="project-image">
+
+<h3>Media Processing & Transformation</h3>
+<p>
+    The heart of PodMorph lies in its sophisticated media processing capabilities:
+</p>
+<ul>
+    <li>Developed advanced text-to-image generation workflows using multiple AI models (DALL-E, Flux, Idiogram) for diverse creative outputs</li>
+    <li>Created sophisticated audio/video processing capabilities using FFMPEG for precise clip extraction and multi-layer composition</li>
+    <li>Implemented intelligent text overlay systems with dynamic sizing and multi-layer outlining for readability</li>
+    <li>Built systems to automatically synchronize text animations with audio using segment timings</li>
+    <li>Integrated natural language processing for entity recognition, sentiment analysis, and quote extraction</li>
+</ul>
+<table style="width: 100%; border-collapse: collapse; table-layout: fixed;">
+    <tr>
+        <td style="width: 33%;"></td>
+        <td style="width: 34%; text-align: center;">
+            <video class="project-video" controls preload="none" poster="/static/img/video_thumbnail.png" style="width: 100%; max-width: 300px; height: auto;">
+                <source src="/static/files/Spider_small.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </td>
+        <td style="width: 33%;"></td>
+    </tr>
+</table>
+
+<h2>Key Contributions</h2>
+<ul>
+    <li>Created a complete AI processing pipeline from audio transcription to fully-rendered social media content</li>
+    <li>Implemented intelligent content transformation with multiple specialized outputs (Twitter threads, Instagram Reels, LinkedIn posts, etc.)</li>
+    <li>Developed sophisticated content verification algorithms to ensure AI-generated content matches source material</li>
+    <li>Built a consistent cross-platform user experience that feels native on each supported operating system</li>
+    <li>Designed intelligent fallback mechanisms throughout the system to ensure reliability during API outages</li>
+</ul>
+
+<h2>Technologies & Skills</h2>
+<ul>
+    <li>Kotlin Multiplatform (KMP) for cross-platform development</li>
+    <li>Compose Multiplatform for UI framework</li>
+    <li>Model-View-Intent (MVI) architecture pattern</li>
+    <li>Azure Container Instances and AWS S3 for cloud infrastructure</li>
+    <li>PostgreSQL database and Exposed ORM</li>
+    <li>AI service integration (Groq, Anthropic Claude, OpenAI, Google Vertex)</li>
+    <li>FFMPEG for media manipulation</li>
+    <li>Ktor for networking and API communication</li>
+    <li>HikariCP for database connection pooling</li>
+    <li>CI/CD with GitHub Actions</li>
+    <li>Docker containerization</li>
+</ul>
 {% endblock %}
 
 {% block project_footer %}
-<p>Visit the <a href="https://github.com/yourusername/podmorph">GitHub repository</a> for more information.</p>
-{% endblock %} 
+<p>Transforming audio content into engaging social media experiences through AI-powered automation</p>
+{% endblock %}
+
+<style>
+.project-video {
+    width: 100%;
+    aspect-ratio: 9/16; /* For portrait phone video */
+    border-radius: 12px;
+    display: block;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    object-fit: cover; /* This will ensure the video fills its container while maintaining aspect ratio */
+}
+</style> 

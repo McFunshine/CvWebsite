@@ -395,3 +395,12 @@ section h2 {
 html {
     scroll-behavior: smooth;
 } 
+
+.project-image {
+    max-width: 600px;
+    height: auto;
+    margin: 2rem auto;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    border-radius: 4px;
+    display: block;
+} 

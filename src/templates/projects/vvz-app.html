@@ -1,41 +1,95 @@
 {% extends "_project.html" %}
 
-{% block title %}VVZ App - Course Management Platform{% endblock %}
+{% block title %}Mobile Forced Care Registration App{% endblock %}
 
-{% block project_title %}VVZ App{% endblock %}
+{% block project_title %}Healthcare Registration App{% endblock %}
 
 {% block project_meta %}
-Mobile Course Management & Planning Platform
+Cross-Platform Healthcare Registration Solution with Advanced Privacy Controls
 {% endblock %}
 
 {% block project_content %}
+<style>
+.project-screenshot {
+    display: block;
+    max-height: 400px;
+    width: auto;
+    margin: 2rem auto;
+}
+</style>
+
 <h2>Overview</h2>
 <p>
-    The VVZ App is a comprehensive mobile application designed to streamline course selection and management for students at ETH Zürich.
+    In 2023-2024, I led the development of a privacy-focused mobile application for mental healthcare professionals to register forced care interventions under the Dutch Mental Healthcare Act (Wvggz). This Kotlin Multiplatform (KMP) solution streamlines the administrative burden for healthcare professionals while maintaining strict patient privacy and data security standards.
 </p>
 
-<h2>Key Features</h2>
-<ul>
-    <li>Real-time course catalog integration</li>
-    <li>Personalized schedule planning</li>
-    <li>Conflict detection and resolution</li>
-    <li>Study program requirement tracking</li>
-</ul>
+<img src="/static/img/patient_suggestion.png" alt="Healthcare App Overview" class="project-screenshot">
 
-<h2>Technologies Used</h2>
-<ul>
-    <li>React Native for cross-platform development</li>
-    <li>TypeScript for type-safe code</li>
-    <li>GraphQL for efficient data fetching</li>
-    <li>Redux for state management</li>
-</ul>
+<h2>Technical Achievements</h2>
 
-<h2>Development Process</h2>
+<h3>Cross-Platform Development & Architecture</h3>
 <p>
-    Development focused on creating an intuitive user experience while handling complex scheduling logic and real-time data synchronization with the university's systems.
+    As Lead Developer, I designed and implemented a comprehensive security-first solution:
 </p>
+<ul>
+    <li>Designed and implemented a comprehensive Kotlin Multiplatform application delivering seamless experiences across both iOS and Android platforms</li>
+    <li>Created an innovative authentication system with multi-factor security (biometrics, PIN, and 2FA) to ensure only authorized personnel can access patient data</li>
+    <li>Developed secure token validation and API key management systems with encryption measures that comply with healthcare privacy requirements</li>
+    <li>Built a clean architecture with separation of concerns between UI, business logic, and data layers for improved maintainability and security</li>
+    <li>Implemented advanced encryption for sensitive patient data storage and transmission</li>
+</ul>
+<img src="/static/img/patient_list.png" alt="Security Architecture" class="project-screenshot">
+
+<h3>Advanced AI Integration & Privacy Protection</h3>
+<p>
+    I developed innovative AI solutions that prioritize privacy:
+</p>
+<ul>
+    <li>Engineered a novel patient avatar generation system that preserves recognition capability while maintaining anonymity</li>
+    <li>Created a prediction model to anticipate the most likely patients and care types to be registered, reducing administrative time</li>
+    <li>Developed a speech-to-text transcription system with domain-specific terminology recognition for fast care documentation</li>
+    <li>Implemented natural language processing for smart note formatting and validation of required documentation fields</li>
+    <li>Built bias detection methods to ensure fair and accurate patient care predictions across diverse populations</li>
+</ul>
+
+<img src="/static/img/register_care.png" alt="AI Privacy Features" class="project-screenshot">
+
+<h3>Secure API Integration & Patient Management</h3>
+<p>
+    Security and efficiency were paramount in the API design:
+</p>
+<ul>
+    <li>Designed and implemented a complete RESTful API infrastructure for secure communication with the central portal</li>
+    <li>Created intelligent patient filtering and search capabilities with intuitive UI for quick identification</li>
+    <li>Implemented real-time care suggestion functionality based on historical data and current patient status</li>
+    <li>Built robust care registration workflows with appropriate validation for both approved and disallowed care scenarios</li>
+    <li>Developed secure offline functionality with encrypted local storage and synchronization when connectivity is restored</li>
+</ul>
+<img src="/static/img/avatar_generator.png" alt="Secure API Integration" class="project-screenshot">
+
+<h2>Key Contributions</h2>
+<ul>
+    <li>Reduced administrative burden for mental healthcare professionals through intuitive interface and AI assistance</li>
+    <li>Enhanced patient privacy through innovative anonymization techniques and secure data handling</li>
+    <li>Created a cross-platform solution that works seamlessly across both iOS and Android environments</li>
+    <li>Implemented robust authentication mechanisms that balance security with usability in time-sensitive scenarios</li>
+    <li>Developed predictive capabilities to streamline care registration while maintaining accurate documentation</li>
+</ul>
+
+<h2>Technologies & Skills</h2>
+<ul>
+    <li>Kotlin Multiplatform for cross-platform development</li>
+    <li>Secure authentication with biometrics, PIN, and 2FA</li>
+    <li>REST API design and implementation</li>
+    <li>Advanced encryption for sensitive healthcare data</li>
+    <li>AI-powered speech recognition and transcription</li>
+    <li>Predictive modeling for patient and care suggestion</li>
+    <li>Natural language processing for documentation</li>
+    <li>Privacy-preserving image processing</li>
+    <li>Cross-platform UI development</li>
+</ul>
 {% endblock %}
 
 {% block project_footer %}
-<p>Available on the App Store and Google Play Store</p>
-{% endblock %} 
+<p>Enhancing mental healthcare delivery through secure, efficient technology</p>
+{% endblock %}

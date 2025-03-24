@@ -1,41 +1,125 @@
 {% extends "_project.html" %}
 
-{% block title %}Language Engineering - Compiler & Language Design{% endblock %}
+{% block title %}Language Engineering - Projectional Editing for Business Rules{% endblock %}
 
 {% block project_title %}Language Engineering{% endblock %}
 
 {% block project_meta %}
-Compiler Development and Programming Language Design
+Advanced Language Engineering and Visualization Platform
 {% endblock %}
 
 {% block project_content %}
 <h2>Overview</h2>
 <p>
-    Research and development in programming language design, focusing on type systems, compiler optimization, and language tooling.
+    In 2021, I conducted innovative research on improving business rules comprehensibility through projectional editing techniques. This work addressed a critical challenge in the software industry: as business rules grow in number and complexity, they become increasingly difficult to understand and maintain. Using JetBrains MPS and the Drools business rules language, I developed a prototype demonstrating how projectional editing can transform how developers interact with and understand complex rule systems.
 </p>
+<img src="/static/img/drools_overview.png" alt="Projectional Editing Overview" class="project-image">
 
-<h2>Key Projects</h2>
-<ul>
-    <li>Custom compiler implementation</li>
-    <li>Type system research</li>
-    <li>Language server protocol tools</li>
-    <li>Static analysis frameworks</li>
-</ul>
+<h2>Technical Achievements</h2>
 
-<h2>Technologies Used</h2>
-<ul>
-    <li>LLVM infrastructure</li>
-    <li>OCaml for type system implementation</li>
-    <li>Rust for tooling</li>
-    <li>Tree-sitter for parsing</li>
-</ul>
-
-<h2>Research Areas</h2>
+<h3>Language Engineering & Implementation</h3>
 <p>
-    Focus on advanced type systems, effect systems, and compiler optimizations for modern programming languages.
+    As a Language Engineer, I developed sophisticated solutions for business rule representation:
 </p>
+<ul>
+    <li>Designed and implemented two Drools-based languages in JetBrains MPS: a proof-of-concept "Really Simple Drools" and a more comprehensive "Drools-Lite"</li>
+    <li>Created a non-invasive extension architecture allowing different projections to be combined without modifying the core language</li>
+    <li>Successfully implemented complex language features including rule variables, constraints, restriction values, and right-hand side Java integration</li>
+    <li>Developed a reference framework demonstrating how projectional editing can be applied to business rule languages</li>
+    <li>the following diagram is the Really Simple Drools proof of concept language</li>
+</ul>
+<img src="/static/img/language_implementation.png" alt="Language Implementation Architecture" class="project-image">
+
+<h3>Innovative Projections Development</h3>
+<p>
+    My work in projection development revolutionized how developers interact with business rules:
+</p>
+<ul>
+    <li>Created seven distinct projections of varying complexity to visualize and edit Drools rules</li>
+    <li>Implemented advanced tabular projections including a spreadsheet-like editor and a decision table</li>
+    <li>Developed specialized visual aids including rule filtering, color-coded indicators, and summary projections</li>
+    <li>Engineered wireframes demonstrating circuit diagram and truth table visualizations for complex rule logic</li>
+    <li>Built an architecture allowing simultaneous, synchronized editing across multiple projections</li>
+    <li>Note that the example below is not an application, but a fully functional programming language projected as a table</li>
+</ul>
+<img src="/static/img/projections_showcase.png" alt="Multiple Rule Projections" class="project-image">
+
+<h3>Technical Integration Solutions</h3>
+<p>
+    I delivered comprehensive integration solutions that enhanced the development experience:
+</p>
+<ul>
+    <li>Successfully integrated Drools semantics with the MPS BaseLanguage (Java) for comprehensive rule implementation</li>
+    <li>Designed and implemented intelligent code completion with context-aware suggestions</li>
+    <li>Created a cross-referencing system allowing rules to reference facts and properties</li>
+    <li>Constructed scope constraint systems to streamline the editing experience</li>
+    <li>Built substitution mechanisms to allow rapid rule creation and modification</li>
+    <li>Note that the example below is a more compact version of the same fully functional drools language</li>
+</ul>
+<img src="/static/img/interesting_drools.png" alt="Technical Integration Architecture" class="project-image">
+
+<h2>Key Technical Contributions</h2>
+<ul>
+    <li>Developed a novel way to represent and edit business rules using projectional editing</li>
+    <li>Created an alternative base language for model-to-model transformations in the MPS ecosystem</li>
+    <li>Implemented a more compact and intuitive way to enter and edit rules compared to traditional text-based approaches</li>
+    <li>Enabled dynamic visualization of rule interactions and relationships</li>
+    <li>Demonstrated real-time synchronized editing across different projections of the same rule system</li>
+</ul>
+
+<h2>Technologies & Skills</h2>
+<ul>
+    <li>JetBrains MPS language workbench</li>
+    <li>Language engineering and DSL creation</li>
+    <li>Abstract syntax tree manipulation</li>
+    <li>Projectional editing technologies</li>
+    <li>Drools business rules language</li>
+    <li>Model-driven engineering</li>
+    <li>User interface design for developer tools</li>
+    <li>Smart reference implementation</li>
+    <li>Scope and constraint systems</li>
+</ul>
+
+<h2>Research Publication</h2>
+<p>
+    As well as being a reasearch project within Khonraad Software Engineering, this project also formed the basis of my master's thesis in Software Engineering, exploring how projectional editing can revolutionize the way we work with business rules.
+</p>
+<a href="/static/files/thesis.pdf" class="thesis-link" target="_blank">
+    <div class="thesis-download">
+        <img src="/static/img/thesis_frontpage.png" alt="Download Thesis PDF" style="width: 70px; height: auto;">
+        <span class="download-text">Download Master's Thesis</span>
+    </div>
+</a>
+
+<style>
+.thesis-link {
+    text-decoration: none;
+    color: inherit;
+    display: inline-block;
+}
+
+.thesis-download {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 8px 16px;
+    border: 1px solid #444;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.thesis-download:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+.download-text {
+    font-weight: 500;
+}
+</style>
 {% endblock %}
 
 {% block project_footer %}
-<p>Advancing the field of programming language design and implementation</p>
+<p>Transforming how developers interact with business-critical code through innovative language engineering</p>
 {% endblock %} 
