@@ -31,6 +31,8 @@ def main():
     # Copy static files
     if os.path.exists(static_dir):
         os.system(f"cp -r {static_dir}/* {output_dir}/static/")
+        # Copy favicon to root directory as well
+        os.system(f"cp {static_dir}/img/favicon.ico {output_dir}/favicon.ico")
 
 
 if __name__ == "__main__":
