@@ -10,6 +10,7 @@ body {
     color: rgba(255, 255, 255, 0.5);
     background-color: #1b1c1d;
     padding-top: 60px; /* Keep this to account for fixed nav */
+    overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
 /* Navigation container */
@@ -34,24 +35,26 @@ body {
     font-size: 16px;
     letter-spacing: 0.05em;
     text-transform: capitalize;
-    white-space: nowrap;
     line-height: 1em;
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 60px;
-    padding: 0 1em;
+    min-height: 60px;
+    padding: 0.5em 1em;
+    flex-wrap: wrap;
+    gap: 0.5em;
 }
 
 /* Navigation items */
 .nav-link {
     display: inline-block;
     vertical-align: middle;
-    margin: 0 0.618em;
-    padding: 0.618em 0;
+    margin: 0 0.3em;
+    padding: 0.5em 0;
     color: #dbdbdb;
     transition: color 170ms ease-in-out, background-color 170ms ease-in-out;
     text-decoration: none;
+    white-space: nowrap;
 }
 
 .nav-link:hover {
@@ -70,11 +73,20 @@ a:hover {
     color: #ffffff;
 }
 
+/* Ensure all images scale properly */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
 /* Content area */
 .content {
     padding: 2em;
     max-width: 1200px;
     margin: 0 auto;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 /* Hero section */
@@ -135,6 +147,9 @@ a:hover {
     letter-spacing: 0.1em;
     transition: all 170ms ease-in-out;
     margin: 0 0.5em;
+    box-sizing: border-box;
+    white-space: nowrap;
+    text-align: center;
 }
 
 .button.primary {
@@ -190,14 +205,16 @@ section h2 {
 
 /* Portfolio section */
 #portfolio {
-    scroll-margin-top: 80px; /* Header height (60px) + extra padding (20px) */
+    scroll-margin-top: 80px;
 }
 
 .carousel-wrapper {
     position: relative;
     max-width: 1600px;
     margin: 0 auto 2em;
-    padding: 0 100px; /* Space for arrows */
+    padding: 0 20px; /* Reduced padding for mobile */
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .carousel-container {
@@ -209,16 +226,17 @@ section h2 {
 .project-carousel {
     display: flex;
     transition: transform 0.5s ease-in-out;
-    gap: 2em;
+    gap: 1em;
 }
 
 .project-card {
-    width: calc((100% - 4em) / 3); /* Width for exactly 3 cards */
-    flex: 0 0 auto; /* Don't allow flex to adjust the width */
+    flex: 0 0 100%;
     background: rgba(255, 255, 255, 0.05);
-    padding: 2em;
+    padding: 1.5em;
     border-radius: 8px;
     transition: transform 170ms ease-in-out;
+    box-sizing: border-box;
+    width: 100%; /* Ensure full width on mobile */
 }
 
 .project-card:hover {
@@ -237,13 +255,13 @@ section h2 {
     background: rgba(74, 144, 226, 0.2);
     border: none;
     color: #ffffff;
-    width: 60px;
-    height: 60px;
+    width: 40px; /* Smaller buttons on mobile */
+    height: 40px;
     border-radius: 50%;
     cursor: pointer;
     z-index: 2;
     transition: all 170ms ease-in-out;
-    font-size: 1.5em;
+    font-size: 1.2em;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -312,10 +330,12 @@ section h2 {
 /* Time limited section */
 .time-limited {
     text-align: center;
-    padding: 3em 2em;
+    padding: 3em 1em;
     background: linear-gradient(45deg, #4a90e2, #357abd);
     border-radius: 8px;
     margin-bottom: 0;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .time-limited h2,
@@ -328,9 +348,11 @@ section h2 {
 .stats-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 2em;
+    gap: 1em;
     margin: 2em auto;
     max-width: 800px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .deadline-date {
@@ -342,6 +364,8 @@ section h2 {
     border-radius: 8px;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .deadline-date.offers {
@@ -390,6 +414,8 @@ section h2 {
     justify-content: center;
     gap: 1em;
     flex-wrap: wrap;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 html {
@@ -397,10 +423,206 @@ html {
 } 
 
 .project-image {
-    max-width: 600px;
+    max-width: 100%;
+    width: 100%;
     height: auto;
     margin: 2rem auto;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     border-radius: 4px;
     display: block;
+    box-sizing: border-box;
+}
+
+/* Add a container for project images */
+.project-content {
+    max-width: 600px;
+    margin: 0 auto;
+    width: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    body {
+        padding-top: 80px; /* Increased to account for two-line nav */
+        font-size: 14px;
+    }
+
+    .nav-links {
+        height: auto;
+        min-height: 50px;
+        padding: 0.5em;
+        gap: 0.3em;
+    }
+
+    .nav-link {
+        margin: 0 0.2em;
+        padding: 0.3em 0;
+        font-size: 14px;
+    }
+
+    .hero {
+        padding: 0.5em 0 2em;
+        margin-bottom: 2em;
+    }
+
+    .hero .name {
+        font-size: 3.5em;
+    }
+
+    .hero .hero-title {
+        font-size: 2em;
+    }
+
+    .hero .subheadline {
+        font-size: 1.1em;
+        padding: 0 1em;
+    }
+
+    .content {
+        padding: 1em;
+    }
+
+    .carousel-wrapper {
+        padding: 0 40px;
+    }
+
+    .project-card {
+        width: calc(100% - 2em);
+        padding: 1.5em;
+    }
+
+    .carousel-button {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2em;
+    }
+
+    .qualities {
+        grid-template-columns: 1fr;
+        gap: 1.5em;
+    }
+
+    .button {
+        padding: 0.6em 1.2em;
+        font-size: 14px;
+        margin: 0 0.3em;
+        width: auto;
+        min-width: 0;
+    }
+
+    .cta-buttons {
+        flex-direction: column;
+        gap: 1em;
+        padding: 0 1em;
+    }
+
+    .cta-buttons .button {
+        width: 100%;
+        text-align: center;
+        margin: 0;
+    }
+
+    .time-limited {
+        padding: 2em 1em;
+    }
+
+    .stats-container {
+        gap: 0.8em;
+        padding: 0 0.5em;
+    }
+
+    .deadline-date {
+        padding: 1.2em;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding-top: 90px; /* Further increased for very small screens */
+        font-size: 13px;
+    }
+
+    .nav-links {
+        padding: 0.3em;
+    }
+
+    .nav-link {
+        margin: 0 0.15em;
+        padding: 0.2em 0;
+        font-size: 13px;
+    }
+
+    .hero .name {
+        font-size: 2.8em;
+    }
+
+    .hero .hero-title {
+        font-size: 1.6em;
+    }
+
+    .hero .subheadline {
+        font-size: 1em;
+    }
+
+    section {
+        margin-bottom: 3em;
+    }
+
+    section h2 {
+        font-size: 1.6em;
+    }
+
+    .achievements li {
+        padding-left: 1.2em;
+    }
+
+    .stats-container {
+        grid-template-columns: 1fr;
+        gap: 0.8em;
+    }
+
+    .deadline-date {
+        padding: 1em;
+    }
+
+    .button {
+        padding: 0.5em 1em;
+        font-size: 13px;
+    }
+}
+
+/* Add viewport meta tag to HTML template */ 
+
+/* Responsive Design */
+@media (min-width: 768px) {
+    .carousel-wrapper {
+        padding: 0 40px; /* Increased padding for tablets */
+    }
+    .project-carousel {
+        gap: 2em;
+    }
+    .project-card {
+        flex: 0 0 calc(50% - 1em);
+        padding: 2em;
+    }
+    .carousel-button {
+        width: 50px;
+        height: 50px;
+        font-size: 1.3em;
+    }
+}
+@media (min-width: 1024px) {
+    .carousel-wrapper {
+        padding: 0 60px; /* Full padding for desktop */
+    }
+    .project-card {
+        flex: 0 0 calc(33.333% - 1.33em);
+    }
+    .carousel-button {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5em;
+    }
 } 
