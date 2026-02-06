@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450">
+  <defs>
+    <linearGradient id="dataGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3498db;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2980b9;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="processGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#9b59b6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#8e44ad;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="trainGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#e74c3c;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#c0392b;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="outputGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#27ae60;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#229954;stop-opacity:1" />
+    </linearGradient>
+    <filter id="shadow2" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="2" dy="2" stdDeviation="3" flood-opacity="0.3"/>
+    </filter>
+    <marker id="arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#ffffff"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="450" fill="#1a1a2e"/>
+
+  <!-- Title -->
+  <text x="400" y="35" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="20" font-weight="bold">Fine-Tuning Pipeline</text>
+
+  <!-- Row 1: Data Sources -->
+  <text x="400" y="70" text-anchor="middle" fill="#888888" font-family="Arial, sans-serif" font-size="12">DATA SOURCES</text>
+
+  <!-- Wikipedia Box -->
+  <rect x="80" y="85" width="130" height="70" rx="6" fill="url(#dataGrad)" filter="url(#shadow2)"/>
+  <text x="145" y="115" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="12" font-weight="bold">Wikipedia NL</text>
+  <text x="145" y="135" text-anchor="middle" fill="#e0e0e0" font-family="Arial, sans-serif" font-size="10">161k sentences</text>
+
+  <!-- Letters Box -->
+  <rect x="335" y="85" width="130" height="70" rx="6" fill="url(#dataGrad)" filter="url(#shadow2)"/>
+  <text x="400" y="115" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="12" font-weight="bold">Letter Templates</text>
+  <text x="400" y="135" text-anchor="middle" fill="#e0e0e0" font-family="Arial, sans-serif" font-size="10">Pseudonymized</text>
+
+  <!-- Municipal Docs Box -->
+  <rect x="590" y="85" width="130" height="70" rx="6" fill="url(#dataGrad)" filter="url(#shadow2)"/>
+  <text x="655" y="115" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="12" font-weight="bold">Municipal Docs</text>
+  <text x="655" y="135" text-anchor="middle" fill="#e0e0e0" font-family="Arial, sans-serif" font-size="10">2.9M words</text>
+
+  <!-- Arrows down -->
+  <path d="M145 160 L145 185" stroke="#ffffff" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+  <path d="M400 160 L400 185" stroke="#ffffff" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+  <path d="M655 160 L655 185" stroke="#ffffff" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+
+  <!-- Row 2: Processing -->
+  <text x="400" y="205" text-anchor="middle" fill="#888888" font-family="Arial, sans-serif" font-size="12">PROCESSING</text>
+
+  <!-- KT Filter -->
+  <rect x="60" y="215" width="170" height="60" rx="6" fill="url(#processGrad)" filter="url(#shadow2)"/>
+  <text x="145" y="240" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="11" font-weight="bold">KT API B1 Filter</text>
+  <text x="145" y="258" text-anchor="middle" fill="#e0e0e0" font-family="Arial, sans-serif" font-size="10">Score ≤ 3.2</text>
+
+  <!-- Synthetic Gen -->
+  <rect x="315" y="215" width="170" height="60" rx="6" fill="url(#processGrad)" filter="url(#shadow2)"/>
+  <text x="400" y="240" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="11" font-weight="bold">Synthetic Generation</text>
+  <text x="400" y="258" text-anchor="middle" fill="#e0e0e0" font-family="Arial, sans-serif" font-size="10">LLM quality check</text>
+
+  <!-- Domain Adapt -->
+  <rect x="570" y="215" width="170" height="60" rx="6" fill="url(#processGrad)" filter="url(#shadow2)"/>
+  <text x="655" y="240" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="11" font-weight="bold">Domain Adaptation</text>
+  <text x="655" y="258" text-anchor="middle" fill="#e0e0e0" font-family="Arial, sans-serif" font-size="10">Continued pre-training</text>
+
+  <!-- Arrows converging -->
+  <path d="M145 280 L145 305 L350 305" stroke="#ffffff" stroke-width="2" fill="none"/>
+  <path d="M400 280 L400 305" stroke="#ffffff" stroke-width="2" fill="none"/>
+  <path d="M655 280 L655 305 L450 305" stroke="#ffffff" stroke-width="2" fill="none"/>
+  <path d="M400 305 L400 320" stroke="#ffffff" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+
+  <!-- Row 3: Training -->
+  <rect x="250" y="325" width="300" height="55" rx="6" fill="url(#trainGrad)" filter="url(#shadow2)"/>
+  <text x="400" y="348" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="13" font-weight="bold">Training on Nebius H100 80GB</text>
+  <text x="290" y="368" text-anchor="middle" fill="#e0e0e0" font-family="Arial, sans-serif" font-size="10">SFT</text>
+  <text x="340" y="368" text-anchor="middle" fill="#e0e0e0" font-family="Arial, sans-serif" font-size="10">→</text>
+  <text x="400" y="368" text-anchor="middle" fill="#e0e0e0" font-family="Arial, sans-serif" font-size="10">DPO (43k pairs)</text>
+  <text x="470" y="368" text-anchor="middle" fill="#e0e0e0" font-family="Arial, sans-serif" font-size="10">→</text>
+  <text x="510" y="368" text-anchor="middle" fill="#e0e0e0" font-family="Arial, sans-serif" font-size="10">Curriculum</text>
+
+  <!-- Arrow down -->
+  <path d="M400 385 L400 405" stroke="#ffffff" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+
+  <!-- Output -->
+  <rect x="300" y="410" width="200" height="30" rx="6" fill="url(#outputGrad)" filter="url(#shadow2)"/>
+  <text x="400" y="430" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="12" font-weight="bold">B1-Optimized Dutch Model</text>
+
+  <!-- Tech labels -->
+  <text x="70" y="440" text-anchor="start" fill="#666666" font-family="Arial, sans-serif" font-size="9">Axolotl • vLLM • SGLang</text>
+  <text x="730" y="440" text-anchor="end" fill="#666666" font-family="Arial, sans-serif" font-size="9">QLoRA • Curriculum Learning</text>
+</svg>

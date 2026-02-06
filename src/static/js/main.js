@@ -108,4 +108,85 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Optional: Auto-play
     // setInterval(nextSlide, 5000);
+
+    // Endorsement Carousel functionality
+    const endorsementCarousel = document.querySelector('.endorsement-carousel');
+    if (endorsementCarousel) {
+        const endorsementCards = Array.from(endorsementCarousel.querySelectorAll('.endorsement-card'));
+        const endorsementPrevButton = document.querySelector('.endorsement-button.prev');
+        const endorsementNextButton = document.querySelector('.endorsement-button.next');
+
+        let endorsementIndex = 0;
+        const totalEndorsements = endorsementCards.length;
+
+        function getEndorsementCardWidth() {
+            const firstCard = endorsementCards[0];
+            const style = window.getComputedStyle(firstCard);
+            const width = firstCard.offsetWidth;
+            const gap = 32; // 2em gap
+            return width + gap;
+        }
+
+        let endorsementCardWidth = getEndorsementCardWidth();
+
+        window.addEventListener('resize', () => {
+            endorsementCardWidth = getEndorsementCardWidth();
+            moveEndorsementToIndex(endorsementIndex);
+        });
+
+        function updateEndorsementButtonStates() {
+            const visibleCards = window.innerWidth <= 768 ? 1 : 2;
+            endorsementPrevButton.disabled = endorsementIndex <= 0;
+            endorsementNextButton.disabled = endorsementIndex >= totalEndorsements - visibleCards;
+        }
+
+        function moveEndorsementToIndex(index) {
+            endorsementCarousel.style.transform = `translateX(-${index * endorsementCardWidth}px)`;
+            updateEndorsementButtonStates();
+        }
+
+        function moveEndorsementCarousel(direction) {
+            const visibleCards = window.innerWidth <= 768 ? 1 : 2;
+            endorsementCarousel.style.transition = 'transform 0.5s ease-in-out';
+            if (direction === 'next' && endorsementIndex < totalEndorsements - visibleCards) {
+                endorsementIndex++;
+            } else if (direction === 'prev' && endorsementIndex > 0) {
+                endorsementIndex--;
+            }
+            moveEndorsementToIndex(endorsementIndex);
+        }
+
+        updateEndorsementButtonStates();
+
+        endorsementNextButton.addEventListener('click', () => {
+            moveEndorsementCarousel('next');
+        });
+
+        endorsementPrevButton.addEventListener('click', () => {
+            moveEndorsementCarousel('prev');
+        });
+
+        // Touch support for endorsements
+        let endorsementTouchStartX = 0;
+
+        endorsementCarousel.addEventListener('touchstart', e => {
+            endorsementTouchStartX = e.changedTouches[0].screenX;
+            endorsementCarousel.style.transition = 'none';
+        });
+
+        endorsementCarousel.addEventListener('touchend', e => {
+            const touchEndX = e.changedTouches[0].screenX;
+            const diff = endorsementTouchStartX - touchEndX;
+            const visibleCards = window.innerWidth <= 768 ? 1 : 2;
+
+            endorsementCarousel.style.transition = 'transform 0.5s ease-in-out';
+            if (Math.abs(diff) > 50) {
+                if (diff > 0 && endorsementIndex < totalEndorsements - visibleCards) {
+                    moveEndorsementCarousel('next');
+                } else if (diff < 0 && endorsementIndex > 0) {
+                    moveEndorsementCarousel('prev');
+                }
+            }
+        });
+    }
 }); 

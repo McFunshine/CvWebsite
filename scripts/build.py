@@ -28,9 +28,11 @@ def main():
     # Build site
     site.render(use_reloader=False)
 
-    # Copy static files
+    # Copy static files - ensure build/static exists first
     if os.path.exists(static_dir):
-        os.system(f"cp -r {static_dir}/* {output_dir}/static/")
+        static_output = os.path.join(output_dir, "static")
+        os.makedirs(static_output, exist_ok=True)
+        os.system(f"cp -r {static_dir}/* {static_output}/")
         # Copy favicon to root directory as well
         os.system(f"cp {static_dir}/img/favicon.ico {output_dir}/favicon.ico")
 

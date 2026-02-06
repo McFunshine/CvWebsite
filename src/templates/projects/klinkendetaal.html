@@ -1,0 +1,95 @@
+{% extends "_project.html" %}
+
+{% block title %}Klinkende Taal - AI-Powered Language Simplification{% endblock %}
+
+{% block project_title %}Klinkende Taal{% endblock %}
+
+{% block project_meta %}
+Lead AI/ML Engineer - Dutch B1 Language Model Development
+{% endblock %}
+
+{% block project_content %}
+<h2>Overview</h2>
+<p>
+    As Lead AI/ML Engineer at Klinkende Taal (2024-2025), I led the development of AI systems to help Dutch government organizations communicate more clearly with citizens.
+    The core challenge was fine-tuning large language models to produce text at B1 reading level - making official correspondence accessible to the 2.5 million Dutch adults with limited literacy.
+    The value proposition is that citizens can understand government letters without requiring assistance, reducing miscommunication and improving democratic participation.
+</p>
+
+<h2>Technical Achievements</h2>
+
+<h3>Model Evaluation & Selection</h3>
+<p>
+    I designed and implemented a comprehensive evaluation system to identify the optimal base model for fine-tuning:
+</p>
+<ul>
+    <li>Built a multi-service evaluation platform (Java/Spring Boot + Kotlin) comparing 36 LLMs across 4 providers (Mistral, OpenAI, Groq, Nebius)</li>
+    <li>Developed an LLM-as-judge framework with 4 specialized judges evaluating data correctness, style guide compliance, quality adherence, and content rules</li>
+    <li>Integrated the Klinkende Taal API for automated B1/B2 language complexity scoring</li>
+    <li>Achieved 75.6% B1 compliance with Mistral-Small-24B + DPO, up from 12.4% baseline - a 63 percentage point improvement</li>
+</ul>
+<img src="/static/img/kt_evaluation_pipeline.svg" alt="Model Evaluation Pipeline" class="project-image">
+
+<h3>Fine-Tuning Pipeline Development</h3>
+<p>
+    I developed a complete ML pipeline for training language models on simplified Dutch:
+</p>
+<ul>
+    <li>Implemented three-phase training: Domain Adaptation, Supervised Fine-Tuning (SFT), and Direct Preference Optimization (DPO)</li>
+    <li>Built async data pipelines processing 160k+ Wikipedia sentences through B1 filtering and LLM quality assessment</li>
+    <li>Developed curriculum learning approaches with 43k preference pairs sorted by difficulty gap</li>
+    <li>Deployed training infrastructure on Nebius H100 80GB GPUs using Axolotl framework</li>
+    <li>Created SGLang and vLLM inference pipelines for high-throughput model evaluation</li>
+</ul>
+<img src="/static/img/kt_training_pipeline.svg" alt="Fine-Tuning Pipeline" class="project-image">
+
+<h3>Synthetic Data Generation</h3>
+<p>
+    Real training data for government correspondence is privacy-sensitive, requiring synthetic alternatives:
+</p>
+<ul>
+    <li>Built LetterProcessing system for standardizing and pseudonymizing correspondence templates</li>
+    <li>Developed SyntheticLetters pipeline generating DPO training pairs from templates</li>
+    <li>Created 36k combined training examples (32k sentence pairs + 5.3k letter pairs)</li>
+    <li>Implemented quality filtering with automatic rejection of ambiguous or low-quality pairs</li>
+</ul>
+
+<h3>Human Feedback Platform</h3>
+<p>
+    To continuously improve model outputs, I built the LveRLHF expert feedback system:
+</p>
+<ul>
+    <li>Developed a gamified web platform for language experts to evaluate model outputs</li>
+    <li>Implemented Kubernetes deployment with secure authentication for domain-restricted access</li>
+    <li>Created API infrastructure for batch loading evaluation data and collecting feedback</li>
+    <li>Deployed at expertportaal.slimtaal.nl for production use by Lve language specialists</li>
+</ul>
+<a href="/static/img/kt_rlhf_stacked.png" target="_blank">
+    <img src="/static/img/kt_rlhf_stacked.png" alt="RLHF Gamified Platform - Click to expand" class="project-image" style="max-width: 600px; cursor: zoom-in;">
+</a>
+
+<h2>Key Contributions</h2>
+<ul>
+    <li>Established the complete ML infrastructure for B1 language model development</li>
+    <li>Identified Mistral-Small-24B as optimal base model through rigorous comparative study</li>
+    <li>Built reusable evaluation frameworks with objective metrics for language complexity</li>
+    <li>Created comprehensive documentation enabling knowledge transfer to the wider team</li>
+    <li>Developed privacy-preserving synthetic data generation for sensitive government correspondence</li>
+</ul>
+
+<h2>Technologies & Skills</h2>
+<ul>
+    <li>Python, Java, Kotlin, Spring Boot</li>
+    <li>PyTorch, Axolotl, vLLM, SGLang</li>
+    <li>Direct Preference Optimization (DPO) and Supervised Fine-Tuning (SFT)</li>
+    <li>H100 GPU training on Nebius cloud</li>
+    <li>PostgreSQL, Flyway migrations</li>
+    <li>LLM APIs (Mistral, OpenAI, Groq, Nebius)</li>
+    <li>Kubernetes, Docker</li>
+    <li>Async data processing pipelines</li>
+</ul>
+{% endblock %}
+
+{% block project_footer %}
+<p>Making government communication accessible through AI-powered language simplification</p>
+{% endblock %}

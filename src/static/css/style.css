@@ -319,6 +319,125 @@ section h2 {
     margin-bottom: 0.5em;
 }
 
+/* Endorsements section */
+.endorsements {
+    padding: 2em 0;
+}
+
+.endorsements h2 {
+    text-align: center;
+    color: #ffffff;
+    margin-bottom: 1.5em;
+}
+
+.endorsement-carousel-wrapper {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 60px;
+}
+
+.endorsement-carousel-container {
+    overflow: hidden;
+}
+
+.endorsement-carousel {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    gap: 2em;
+}
+
+.endorsement-card {
+    flex: 0 0 calc(50% - 1em);
+    background: rgba(255, 255, 255, 0.05);
+    padding: 2em;
+    border-radius: 12px;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.endorsement-photo {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin: 0 auto 1.5em;
+    object-fit: cover;
+    border: 3px solid rgba(74, 144, 226, 0.5);
+}
+
+.endorsement-card blockquote {
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.8);
+    margin: 0 0 1.5em;
+    line-height: 1.8;
+    font-size: 0.95em;
+}
+
+.endorsement-card cite {
+    display: block;
+    font-style: normal;
+}
+
+.endorsement-card cite strong {
+    display: block;
+    color: #ffffff;
+    font-size: 1.1em;
+    margin-bottom: 0.25em;
+}
+
+.endorsement-card cite span {
+    color: rgba(74, 144, 226, 0.9);
+    font-size: 0.9em;
+}
+
+.endorsement-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(74, 144, 226, 0.2);
+    border: none;
+    color: #ffffff;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 2;
+    transition: all 170ms ease-in-out;
+    font-size: 1.2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.endorsement-button:hover:not(:disabled) {
+    background: rgba(74, 144, 226, 0.4);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.endorsement-button:disabled {
+    background: rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.3);
+    cursor: not-allowed;
+}
+
+.endorsement-button.prev {
+    left: 0;
+}
+
+.endorsement-button.next {
+    right: 0;
+}
+
+@media (max-width: 768px) {
+    .endorsement-card {
+        flex: 0 0 100%;
+    }
+
+    .endorsement-carousel-wrapper {
+        padding: 0 40px;
+    }
+}
+
 /* Connect section */
 .connect {
     text-align: center;
