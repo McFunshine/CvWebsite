@@ -3,13 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Paul Spencer - Senior Software Engineer & AI Architect with ~30 years experience">
+    <meta name="description" content="{% block meta_description %}Paul Spencer - Senior Software Engineer & AI Architect with ~30 years experience{% endblock %}">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="{% block canonical_url %}https://spencerpj.com/{% endblock %}">
 
     <!-- Open Graph / LinkedIn -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://spencerpj.com/">
-    <meta property="og:title" content="Paul Spencer - Software Engineer & AI Architect">
-    <meta property="og:description" content="30+ years of software engineering excellence across AI/ML, Java, .NET and more">
+    <meta property="og:url" content="{% block og_url %}https://spencerpj.com/{% endblock %}">
+    <meta property="og:title" content="{% block og_title %}Paul Spencer - Software Engineer & AI Architect{% endblock %}">
+    <meta property="og:description" content="{% block og_description %}30+ years of software engineering excellence across AI/ML, Java, .NET and more{% endblock %}">
     <meta property="og:image" content="https://spencerpj.com/static/img/photogravure.png">
 
     <!-- Twitter -->
@@ -21,8 +24,38 @@
     <link rel="icon" type="image/x-icon" href="/static/img/favicon.ico?v=2">
     <link rel="icon" type="image/png" href="/static/img/favicon.png?v=2">
     <title>{% block title %}{% endblock %}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Abel&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/static/css/style.css">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Paul Spencer",
+        "url": "https://spencerpj.com",
+        "image": "https://spencerpj.com/static/img/photogravure.png",
+        "jobTitle": "Senior Software Engineer & AI Architect",
+        "description": "Senior Software Engineer with 30+ years experience across AI/ML, Java, .NET, Kotlin and Python",
+        "email": "mailto:spencerpj@gmail.com",
+        "sameAs": [
+            "https://www.linkedin.com/in/paul-spencer-4789085/",
+            "https://github.com/McFunshine/"
+        ],
+        "knowsAbout": ["AI/ML", "Java", "Kotlin", ".NET", "Python", "LLM Fine-tuning", "Software Architecture"],
+        "alumniOf": {
+            "@type": "CollegeOrUniversity",
+            "name": "University of Amsterdam"
+        },
+        "hasCredential": {
+            "@type": "EducationalOccupationalCredential",
+            "credentialCategory": "degree",
+            "name": "Master's in Software Engineering"
+        }
+    }
+    </script>
 </head>
 <body>
     <!-- SVG Definitions (boxicons) -->
@@ -39,16 +72,16 @@
         </symbol>
     </svg>
 
-    <nav class="nav">
+    <nav class="nav" aria-label="Main navigation">
         <div class="nav-inner">
             <div class="nav-social">
                 <a href="mailto:spencerpj@gmail.com" aria-label="Email">
                     <svg viewBox="0 0 24 24"><use href="#icon-email"></use></svg>
                 </a>
-                <a href="https://www.linkedin.com/in/paul-spencer-4789085/" target="_blank" aria-label="LinkedIn">
+                <a href="https://www.linkedin.com/in/paul-spencer-4789085/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
                     <svg viewBox="0 0 24 24"><use href="#icon-linkedin"></use></svg>
                 </a>
-                <a href="https://github.com/McFunshine/" target="_blank" aria-label="GitHub">
+                <a href="https://github.com/McFunshine/" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
                     <svg viewBox="0 0 24 24"><use href="#icon-github"></use></svg>
                 </a>
             </div>
@@ -84,4 +117,4 @@
 
     <script src="/static/js/main.js"></script>
 </body>
-</html> 
+</html>

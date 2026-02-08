@@ -33,8 +33,10 @@ def main():
         static_output = os.path.join(output_dir, "static")
         os.makedirs(static_output, exist_ok=True)
         os.system(f"cp -r {static_dir}/* {static_output}/")
-        # Copy favicon to root directory as well
+        # Copy favicon, sitemap and robots.txt to root directory
         os.system(f"cp {static_dir}/img/favicon.ico {output_dir}/favicon.ico")
+        os.system(f"cp {static_dir}/sitemap.xml {output_dir}/sitemap.xml")
+        os.system(f"cp {static_dir}/robots.txt {output_dir}/robots.txt")
 
 
 if __name__ == "__main__":
