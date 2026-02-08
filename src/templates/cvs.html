@@ -5,56 +5,67 @@
 {% block content %}
 <div class="cvs-section">
     <h1>Curriculum Vitae</h1>
-    <div class="cv-options">
-        <div class="cv-card">
+
+    <!-- Column headers -->
+    <div class="cv-grid cv-grid-header">
+        <div class="cv-label"></div>
+        <div class="cv-lang-header">English</div>
+        <div class="cv-lang-header">Nederlands</div>
+    </div>
+
+    <!-- Long CV -->
+    <div class="cv-grid">
+        <div class="cv-label">
             <h2>Long CV</h2>
             <p>Comprehensive overview of my three decades in software engineering, including detailed project experiences and technical expertise.</p>
-            <a href="/static/files/cv_long.pdf" class="button primary">Download Full CV</a>
         </div>
-        
-        <div class="cv-card">
-            <h2>AI/ML CV</h2>
-            <p>CV emphasizing artificial intelligence and machine learning projects, including experience with modern AI frameworks and tools.</p>
-            <a href="/static/files/cv_ai.pdf" class="button primary">Download AI CV</a>
+        <div class="cv-download">
+            <a href="/static/files/cv_long.pdf" class="button primary">Download</a>
         </div>
-
-        <div class="cv-card">
-            <h2>Java CV</h2>
-            <p>CV focused on Java and Kotlin development experience.</p>
-            <a href="/static/files/cv_javaKotlin.pdf" class="button primary">Download Java CV</a>
-        </div>
-
-        <div class="cv-card">
-            <h2>Dot Net CV</h2>
-            <p>CV tailored for Dot Net Roles, highlighting my experience with .Net and C#.</p>
-            <a href="/static/files/cv_dotNet.pdf" class="button primary">Download Dot Net CV</a>
+        <div class="cv-download">
+            <a href="/static/files/cv_long_NL.pdf" class="button primary">Download</a>
         </div>
     </div>
 
-    <h1 class="dutch-section">Curriculum Vitae (Nederlands)</h1>
-    <div class="cv-options">
-        <div class="cv-card">
-            <h2>Uitgebreide CV</h2>
-            <p>Uitgebreid overzicht van mijn drie decennia in software engineering, inclusief gedetailleerde projectervaringen en technische expertise.</p>
-            <a href="/static/files/cv_long_NL.pdf" class="button primary">Download Volledige CV</a>
+    <!-- AI CV -->
+    <div class="cv-grid">
+        <div class="cv-label">
+            <h2>AI CV</h2>
+            <p>CV emphasising artificial intelligence and machine learning projects, including experience with modern AI frameworks and tools.</p>
         </div>
-        
-        <div class="cv-card">
-            <h2>AI/ML CV</h2>
-            <p>CV met nadruk op kunstmatige intelligentie en machine learning projecten, inclusief ervaring met moderne AI frameworks en tools.</p>
-            <a href="/static/files/cv_ai_NL.pdf" class="button primary">Download AI CV</a>
+        <div class="cv-download">
+            <a href="/static/files/cv_ai.pdf" class="button primary">Download</a>
         </div>
+        <div class="cv-download">
+            <a href="/static/files/cv_ai_NL.pdf" class="button primary">Download</a>
+        </div>
+    </div>
 
-        <div class="cv-card">
+    <!-- Java CV -->
+    <div class="cv-grid">
+        <div class="cv-label">
             <h2>Java CV</h2>
-            <p>CV gericht op Java en Kotlin ontwikkelervaring.</p>
-            <a href="/static/files/cv_javaKotlin_NL.pdf" class="button primary">Download Java CV</a>
+            <p>CV focused on Java and Kotlin development experience.</p>
         </div>
+        <div class="cv-download">
+            <a href="/static/files/cv_javaKotlin.pdf" class="button primary">Download</a>
+        </div>
+        <div class="cv-download">
+            <a href="/static/files/cv_javaKotlin_NL.pdf" class="button primary">Download</a>
+        </div>
+    </div>
 
-        <div class="cv-card">
-            <h2>Dot Net CV</h2>
-            <p>CV gericht op Dot Net functies, met nadruk op mijn ervaring met .Net en C#.</p>
-            <a href="/static/files/cv_dotNet_NL.pdf" class="button primary">Download Dot Net CV</a>
+    <!-- Dot Net CV -->
+    <div class="cv-grid">
+        <div class="cv-label">
+            <h2>.Net CV</h2>
+            <p>CV tailored for Dot Net roles, highlighting my experience with .Net and C#.</p>
+        </div>
+        <div class="cv-download">
+            <a href="/static/files/cv_dotNet.pdf" class="button primary">Download</a>
+        </div>
+        <div class="cv-download">
+            <a href="/static/files/cv_dotNet_NL.pdf" class="button primary">Download</a>
         </div>
     </div>
 </div>
@@ -73,40 +84,55 @@
     font-size: 2.5em;
 }
 
-.cv-options {
+.cv-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: 2fr 1fr 1fr;
     gap: 2em;
+    align-items: center;
+    padding: 1.5em 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.cv-card {
-    background: rgba(255, 255, 255, 0.05);
-    padding: 2em;
-    border-radius: 8px;
+.cv-grid-header {
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+    padding-bottom: 1em;
+}
+
+.cv-lang-header {
     text-align: center;
-    transition: transform 170ms ease-in-out;
-}
-
-.cv-card:hover {
-    transform: translateY(-5px);
-}
-
-.cv-card h2 {
     color: #ffffff;
-    margin-bottom: 1em;
+    font-size: 1.2em;
+    font-weight: 500;
 }
 
-.cv-card p {
-    margin-bottom: 2em;
+.cv-label h2 {
+    color: #ffffff;
+    margin-bottom: 0.5em;
+}
+
+.cv-label p {
     color: rgba(255, 255, 255, 0.7);
+    margin: 0;
 }
 
-.dutch-section {
-    margin-top: 3em;
+.cv-download {
     text-align: center;
-    color: #ffffff;
-    margin-bottom: 2em;
-    font-size: 2.5em;
+}
+
+@media (max-width: 768px) {
+    .cv-grid {
+        grid-template-columns: 1fr;
+        gap: 1em;
+        text-align: center;
+    }
+
+    .cv-grid-header {
+        display: none;
+    }
+
+    .cv-download .button::before {
+        display: inline;
+    }
 }
 </style>
 {% endblock %} 
