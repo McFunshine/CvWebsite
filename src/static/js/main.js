@@ -15,15 +15,34 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Email fallback — try mailto, then show popup with address
+    // Email fallback — try mailto, show popup only if no mail client opens
     const emailLink = document.querySelector('.nav-social a[aria-label="Email"]');
     if (emailLink) {
         emailLink.addEventListener('click', (e) => {
             e.preventDefault();
+            let mailClientOpened = false;
+
+            const onBlur = () => {
+                mailClientOpened = true;
+            };
+            window.addEventListener('blur', onBlur);
+
             window.location.href = emailLink.href;
+
             setTimeout(() => {
-                document.getElementById('emailFallback').classList.add('show');
-            }, 100);
+                window.removeEventListener('blur', onBlur);
+                if (!mailClientOpened) {
+                    document.getElementById('emailFallback').classList.add('show');
+                }
+            }, 1000);
+        });
+    }
+
+    // Email fallback close button
+    const emailFallbackClose = document.getElementById('emailFallbackClose');
+    if (emailFallbackClose) {
+        emailFallbackClose.addEventListener('click', () => {
+            document.getElementById('emailFallback').classList.remove('show');
         });
     }
 
