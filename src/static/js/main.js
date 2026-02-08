@@ -2,6 +2,31 @@
 document.addEventListener('DOMContentLoaded', () => {
     console.log('Site loaded');
 
+    // Dropdown nav toggle
+    const dropdownToggle = document.querySelector('.nav-dropdown-toggle');
+    const dropdown = document.querySelector('.nav-dropdown');
+    if (dropdownToggle && dropdown) {
+        dropdownToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            dropdown.classList.toggle('open');
+        });
+        document.addEventListener('click', () => {
+            dropdown.classList.remove('open');
+        });
+    }
+
+    // Email fallback — try mailto, then show popup with address
+    const emailLink = document.querySelector('.nav-social a[aria-label="Email"]');
+    if (emailLink) {
+        emailLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.location.href = emailLink.href;
+            setTimeout(() => {
+                document.getElementById('emailFallback').classList.add('show');
+            }, 100);
+        });
+    }
+
     // Format the job hunt end date
     const dateElement = document.querySelector('[data-auto-update="job-hunt-end"]');
     if (dateElement) {

@@ -21,7 +21,7 @@ def main():
         contexts=[
             ("index.html", {"title": "Home"}),
             ("projects/*.html", {"title": "Projects"}),
-            ("contact.html", {"title": "Contact"}),
+            ("about.html", {"title": "About Me"}),
         ],
     )
 

@@ -29,6 +29,13 @@ body {
     background-color: rgba(27, 28, 29, 0.95);
 }
 
+.nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 60px;
+}
+
 .nav-links {
     font-family: 'Abel', Arial, Helvetica, sans-serif;
     font-weight: 400;
@@ -38,11 +45,83 @@ body {
     line-height: 1em;
     display: flex;
     align-items: center;
-    justify-content: center;
-    min-height: 60px;
-    padding: 0.5em 1em;
-    flex-wrap: wrap;
     gap: 0.5em;
+}
+
+/* Social icons in nav — aligned with content left boundary */
+.nav-social {
+    position: absolute;
+    left: max(1em, calc(50% - 600px + 2em));
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    gap: 0.8em;
+}
+
+.nav-social a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    color: rgba(255, 255, 255, 0.5);
+    transition: color 170ms ease-in-out;
+}
+
+.nav-social a:hover {
+    color: #ffffff;
+}
+
+.nav-social svg {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+}
+
+/* Email fallback modal */
+.email-fallback {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    z-index: 1100;
+    text-align: center;
+    color: #000;
+}
+
+.email-fallback.show {
+    display: block;
+}
+
+.email-fallback p {
+    margin: 0;
+    font-size: 1.2rem;
+    color: #000;
+}
+
+.email-fallback strong {
+    color: #000;
+    font-size: 1.4rem;
+}
+
+.email-fallback button {
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    background: #000;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.email-fallback button:hover {
+    background: #333;
 }
 
 /* Navigation items */
@@ -59,6 +138,66 @@ body {
 
 .nav-link:hover {
     color: #ffffff;
+}
+
+/* Dropdown nav */
+.nav-dropdown {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 0.3em;
+}
+
+.nav-dropdown-toggle {
+    background: none;
+    border: none;
+    font-family: 'Abel', Arial, Helvetica, sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    letter-spacing: 0.05em;
+    text-transform: capitalize;
+    cursor: pointer;
+    padding: 0.5em 0;
+}
+
+.nav-dropdown-toggle::after {
+    content: " ▾";
+    font-size: 0.7em;
+}
+
+.nav-dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(27, 28, 29, 0.97);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    padding: 0.5em 0;
+    min-width: 200px;
+    z-index: 1001;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.nav-dropdown.open .nav-dropdown-menu {
+    display: block;
+}
+
+.nav-dropdown-menu a {
+    display: block;
+    padding: 0.5em 1.2em;
+    color: #dbdbdb;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background-color 170ms ease-in-out, color 170ms ease-in-out;
+}
+
+.nav-dropdown-menu a:hover {
+    color: #ffffff;
+    background-color: rgba(74, 144, 226, 0.2);
 }
 
 /* Link styles */
@@ -564,14 +703,34 @@ html {
 /* Responsive Design */
 @media (max-width: 768px) {
     body {
-        padding-top: 80px; /* Increased to account for two-line nav */
+        padding-top: 60px;
         font-size: 14px;
     }
 
+    .nav-dropdown-menu {
+        left: 0;
+        transform: none;
+    }
+
+    .nav-inner {
+        padding: 0 1em;
+    }
+
+    .nav-social {
+        left: 1em;
+    }
+
+    .nav-social a {
+        width: 16px;
+        height: 16px;
+    }
+
+    .nav-social svg {
+        width: 16px;
+        height: 16px;
+    }
+
     .nav-links {
-        height: auto;
-        min-height: 50px;
-        padding: 0.5em;
         gap: 0.3em;
     }
 
@@ -659,7 +818,7 @@ html {
 
 @media (max-width: 480px) {
     body {
-        padding-top: 90px; /* Further increased for very small screens */
+        padding-top: 60px;
         font-size: 13px;
     }
 
