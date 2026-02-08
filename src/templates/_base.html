@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="{% block meta_description %}Paul Spencer - Senior Software Engineer & AI Architect with ~30 years experience{% endblock %}">
+    <meta name="description" content="{% block meta_description %}Paul Spencer - Senior Software Engineer &amp; AI Architect with ~30 years experience{% endblock %}">
 
     <!-- Canonical URL -->
     <link rel="canonical" href="{% block canonical_url %}https://spencerpj.com/{% endblock %}">
@@ -11,7 +11,7 @@
     <!-- Open Graph / LinkedIn -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="{% block og_url %}https://spencerpj.com/{% endblock %}">
-    <meta property="og:title" content="{% block og_title %}Paul Spencer - Software Engineer & AI Architect{% endblock %}">
+    <meta property="og:title" content="{% block og_title %}Paul Spencer - Software Engineer &amp; AI Architect{% endblock %}">
     <meta property="og:description" content="{% block og_description %}30+ years of software engineering excellence across AI/ML, Java, .NET and more{% endblock %}">
     <meta property="og:image" content="https://spencerpj.com/static/img/photogravure.png">
 
@@ -26,7 +26,7 @@
     <title>{% block title %}{% endblock %}</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Abel&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Abel&amp;display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/static/css/style.css">
 
     <!-- Structured Data -->
@@ -88,7 +88,7 @@
             <div class="nav-links">
                 <a href="/" class="nav-link">Home</a>
                 <div class="nav-dropdown">
-                    <button class="nav-link nav-dropdown-toggle">Projects</button>
+                    <button type="button" class="nav-link nav-dropdown-toggle">Projects</button>
                     <div class="nav-dropdown-menu">
                         <a href="/projects/klinkendetaal.html">Klinkende Taal</a>
                         <a href="/projects/podmorph.html">Podmorph</a>
@@ -112,7 +112,7 @@
     <div class="email-fallback" id="emailFallback">
         <p>You don't have a mail program associated with this browser, so here is my email address:</p>
         <p><strong>spencerpj@gmail.com</strong></p>
-        <button onclick="document.getElementById('emailFallback').classList.remove('show')">Close</button>
+        <button type="button" onclick="document.getElementById('emailFallback').classList.remove('show')">Close</button>
     </div>
 
     <script src="/static/js/main.js"></script>

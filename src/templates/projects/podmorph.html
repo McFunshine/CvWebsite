@@ -19,12 +19,12 @@ Turning Podcasts into TikToks with Generative AI
     I led the development of a cross-platform application that uses AI to transform podcasts and radio programmes into video content for social media.
     I built it from scratch across 7 platforms. The most important part wasn't the AI - it was making sure the AI didn't make things up.
 </p>
-<p style="color: rgba(255,255,255,0.6); font-size: 0.9em;">A collaboration between Captain McFunshine's Software Engineering, Overcoat Media, an independent project leader and an independent designer, 2024.</p>
+<p class="project-date">A collaboration between Captain McFunshine's Software Engineering, Overcoat Media, an independent project leader and an independent designer, 2024.</p>
 <img src="/static/img/podmorph_landing_page.png" alt="PodMorph landing page showing AI podcast-to-video transformation" class="project-image">
 
 <h2>Technical Achievements</h2>
 
-<h3>Software Architecture & Cross-Platform Development</h3>
+<h3>Software Architecture &amp; Cross-Platform Development</h3>
 <p>
     As Lead Architect, I designed and implemented a comprehensive cross-platform solution:
 </p>
@@ -38,7 +38,7 @@ Turning Podcasts into TikToks with Generative AI
 <img src="/static/img/transcript_editor.png" alt="PodMorph transcript editor for podcast content review" class="project-image">
 <img src="/static/img/programme_descriptions.png" alt="PodMorph programme descriptions and metadata management" class="project-image">
 
-<h3>Cloud Infrastructure & API Integration</h3>
+<h3>Cloud Infrastructure &amp; API Integration</h3>
 <p>
     I developed a robust cloud infrastructure to handle complex media processing:
 </p>
@@ -51,7 +51,7 @@ Turning Podcasts into TikToks with Generative AI
 </ul>
 <img src="/static/img/image_selection.png" alt="PodMorph AI selection interface for video generation" class="project-image">
 
-<h3>Media Processing & Transformation</h3>
+<h3>Media Processing &amp; Transformation</h3>
 <p>
     The heart of PodMorph lies in its sophisticated media processing capabilities:
 </p>
@@ -62,17 +62,19 @@ Turning Podcasts into TikToks with Generative AI
     <li>Built systems to automatically synchronize text animations with audio using segment timings</li>
     <li>Integrated natural language processing for entity recognition, sentiment analysis, and quote extraction</li>
 </ul>
-<table style="width: 100%; border-collapse: collapse; table-layout: fixed;">
+<table class="video-center-table">
+    <tbody>
     <tr>
-        <td style="width: 33%;"></td>
-        <td style="width: 34%; text-align: center;">
-            <video class="project-video" controls preload="none" poster="/static/img/video_thumbnail.png" style="width: 100%; max-width: 300px; height: auto;">
+        <td></td>
+        <td class="video-cell">
+            <video class="project-video" controls preload="none" poster="/static/img/video_thumbnail.png">
                 <source src="/static/files/Spider_small.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
         </td>
-        <td style="width: 33%;"></td>
+        <td></td>
     </tr>
+    </tbody>
 </table>
 
 <h2>Key Contributions</h2>
@@ -85,7 +87,7 @@ Turning Podcasts into TikToks with Generative AI
     <li>Designed intelligent fallback mechanisms throughout the system to ensure reliability during API outages</li>
 </ul>
 
-<h2>Technologies & Skills</h2>
+<h2>Technologies &amp; Skills</h2>
 <ul>
     <li>Kotlin Multiplatform (KMP) for cross-platform development</li>
     <li>Compose Multiplatform for UI framework</li>
@@ -103,15 +105,4 @@ Turning Podcasts into TikToks with Generative AI
 
 {% block project_footer %}
 <p></p>
-{% endblock %}
-
-<style>
-.project-video {
-    width: 100%;
-    aspect-ratio: 9/16; /* For portrait phone video */
-    border-radius: 12px;
-    display: block;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-    object-fit: cover; /* This will ensure the video fills its container while maintaining aspect ratio */
-}
-</style> 
+{% endblock %} 

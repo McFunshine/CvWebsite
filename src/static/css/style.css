@@ -951,4 +951,274 @@ html {
 
 .project-content li {
     margin-bottom: 0.5em;
+}
+
+/* VVZ App screenshot styling */
+.project-screenshot {
+    display: block;
+    max-height: 400px;
+    width: auto;
+    margin: 2rem auto;
+}
+
+/* Language Engineering thesis download */
+.thesis-link {
+    text-decoration: none;
+    color: inherit;
+    display: inline-block;
+}
+
+.thesis-download {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 8px 16px;
+    border: 1px solid #444;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.thesis-download:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+.download-text {
+    font-weight: 500;
+}
+
+.thesis-thumbnail {
+    width: 70px;
+    height: auto;
+}
+
+/* PodMorph video styling */
+.project-video {
+    width: 100%;
+    aspect-ratio: 9/16;
+    border-radius: 12px;
+    display: block;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    object-fit: cover;
+}
+
+/* Project date/attribution line */
+.project-date {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.9em;
+}
+
+/* Clickable project image (zoom) */
+.project-image-clickable {
+    max-width: 600px;
+    cursor: zoom-in;
+}
+
+/* PodMorph video centering table */
+.video-center-table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+.video-center-table td {
+    width: 33%;
+}
+
+.video-center-table td.video-cell {
+    width: 34%;
+    text-align: center;
+}
+
+.video-center-table .project-video {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    margin: 0 auto;
+}
+
+/* About page workspace image */
+.about-workspace-image {
+    width: 100%;
+    max-width: 800px;
+    margin: 2rem auto;
+    display: block;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* CV page styles */
+.cvs-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2em;
+}
+
+.cvs-section h1 {
+    text-align: center;
+    color: #ffffff;
+    margin-bottom: 2em;
+    font-size: 2.5em;
+}
+
+.cv-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 2em;
+    align-items: center;
+    padding: 1.5em 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.cv-grid-header {
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+    padding-bottom: 1em;
+}
+
+.cv-lang-header {
+    text-align: center;
+    color: #ffffff;
+    font-size: 1.2em;
+    font-weight: 500;
+}
+
+.cv-label h2 {
+    color: #ffffff;
+    margin-bottom: 0.5em;
+}
+
+.cv-label p {
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0;
+}
+
+.cv-download {
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .cv-grid {
+        grid-template-columns: 1fr;
+        gap: 1em;
+        text-align: center;
+    }
+
+    .cv-grid-header {
+        display: none;
+    }
+
+    .cv-download .button::before {
+        display: inline;
+    }
+}
+
+/* About page styles */
+.contact-page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.contact-page .intro h1 {
+    margin-bottom: 2rem;
+}
+
+.profile-container {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 1rem;
+    width: 100%;
+}
+
+.profile-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.profile-content {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    width: 100%;
+}
+
+.profile-image {
+    width: 15%;
+    height: auto;
+    min-width: 120px;
+    max-width: 150px;
+}
+
+.intro-text {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 120px;
+}
+
+.tagline {
+    margin-bottom: 1rem;
+}
+
+.availability {
+    color: #666;
+    font-size: 1.1rem;
+    margin-top: 0.5rem;
+}
+
+.social-links {
+    margin-top: 1.5rem;
+}
+
+.contact-links {
+    margin-bottom: 3rem;
+}
+
+.contact-links ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+}
+
+.contact-links a {
+    text-decoration: none;
+    color: #333;
+    font-size: 1.5rem;
+}
+
+.contact-links a:hover {
+    color: #666;
+}
+
+.contact-page section {
+    margin-bottom: 4rem;
+}
+
+.goals-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.goal {
+    padding: 1.5rem;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.goal h3 {
+    margin-top: 0;
+    color: #ffffff;
+}
+
+.contact-page h2 {
+    margin: 2rem 0 1rem;
 } 
