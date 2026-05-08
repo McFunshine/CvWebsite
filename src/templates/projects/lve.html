@@ -1,0 +1,127 @@
+{% extends "_project.html" %}
+
+{% block title %}LVE | Agent-Led .NET Migration{% endblock %}
+{% block meta_description %}Agent-led big-bang migration of a .NET 4.6 WebForms training platform to a hexagonal .NET 9 Blazor stack. Delivered in 6 weeks against a prior estimate of more than twice that.{% endblock %}
+{% block canonical_url %}https://spencerpj.com/projects/lve.html{% endblock %}
+{% block og_url %}https://spencerpj.com/projects/lve.html{% endblock %}
+{% block og_title %}LVE | Agent-Led .NET Migration{% endblock %}
+{% block og_description %}Migrating a production training platform with Claude Code as a daily collaborator. Spec-driven, worktree-parallel, compiler-enforced.{% endblock %}
+
+{% block project_title %}LVE{% endblock %}
+
+{% block project_meta %}
+Senior Engineer / AI Engineer. Agent-Led .NET Modernisation.
+{% endblock %}
+
+{% block project_content %}
+<h2>Overview</h2>
+<p>
+    I led the migration of LVE's (Loo van Eck) training platform from an old .NET 4.6 WebForms application to a modern hexagonal .NET 9 stack with two Blazor frontends: Server-rendered for the hundreds of content editors, and SSR for the thousands of trainees. The legacy system kept serving traffic during the rebuild and the cutover was a single big-bang migration. The work shipped in 6 weeks against a prior estimate (without architectural changes) of more than twice that.
+</p>
+<p>
+    The defining feature of the project was not the target stack. It was the development model. Codebase and agent behaviour evolved together: every correction became a persistent memory, every architectural rule became a build-failing analyser, every recurring error became a guard test or a CLAUDE.md line. The work averaged 8 commits a day with at least 3 Claude Code sessions running in parallel.
+</p>
+<p class="project-date">Loo van Eck, 2026.</p>
+
+<img src="/static/img/lve_taal_games.png" alt="LVE training platform lesson view with chapter navigation and embedded video" class="project-image">
+
+<h2>Learning to Delegate</h2>
+<p>
+    I have always been pedantic about my code and design decisions. On a project this size, holding on to that level of control would have made the project impossible.
+</p>
+<p>
+    The maths of agentic coding was unforgiving. To get real leverage I had to let multiple Claude Code sessions run in parallel against a production codebase, and not be reading every line. What got me past that resistance was other people: Amsterdam AI meetups, hackathon weekends, evenings in community sessions with engineers a few weeks ahead of me on the same curve. Each had hit the same wall and worked out a piece of the answer.
+</p>
+<p>
+    The guardrails came first, before any new code. I spent the opening week extracting the legacy app's behaviour into BDD scenarios, each one paired with a Playwright screenshot, and walked users through the document until they signed off on what the system actually did. From there I built an end-to-end test suite against the legacy code itself, and those tests became the guiding principles for the tests written first for the new app. The new code was never written into open space. It grew to fill a harness that already knew what it should do.
+</p>
+<p>
+    The result was two parallel efforts. One was the migration. The other was the build-time and test-time verification that let me rely on unsupervised agent work without reading every line. The sections below are the latter.
+</p>
+
+<h2>Technical Achievements</h2>
+
+<h3>Agent Orchestration &amp; Context Engineering</h3>
+<p>
+    The context layer that let multiple Claude Code agents work coherently against the same codebase:
+</p>
+<img src="/static/img/02-agentic-loop.png" alt="Agentic feedback loop diagram showing how I orchestrated Claude Code main session, plan and explore agents, review and specialist sub-agents, with persistent knowledge feeding into Roslyn analysers and the build-time quality ratchet" class="project-image">
+<ul>
+    <li>CLAUDE.md as the canonical rules document, with six markdown sub-agent definitions (<em>worktree-builder</em>, <em>code-reviewer</em>, <em>simplify</em>, <em>Plan</em>, <em>Explore</em>, <em>general-purpose</em>) composed into a feature pipeline</li>
+    <li>Custom slash-command suite (<code>/review</code>, <code>/simplify</code>, <code>/loop</code>, <code>/handoff</code>, <code>/mint-url</code>, plus the full <code>speckit.*</code> family) for repeatable, named operations rather than ad-hoc prompting</li>
+    <li>Adopted the <strong>context-mode plugin (<code>ctx</code>)</strong> for scoped context loading, which kept agent attention pointed at the right files without bloating the prompt</li>
+    <li>Persistent memory captured every workflow correction, project decision, and reference note so the next session inherited the rule</li>
+</ul>
+
+<h3>Spec-Driven Parallel Execution</h3>
+<p>
+    Every feature began as a written specification, not a prompt, generated using Spec Kit. The workflow that turned specs into shippable code in parallel:
+</p>
+<img src="/static/img/01-feature-pipeline.png" alt="Feature pipeline diagram showing the path from idea through spec-driven authoring, isolated worktree with TDD loop, multi-layer verification, quality gate with Roslyn analysers, and final integration into master" class="project-image">
+<ul>
+    <li>Authored specifications through the spec, plan, tasks, implement pipeline before any production code was written for the slice</li>
+    <li><strong>Worktree-per-feature</strong>: each spec lived in its own git worktree with a dedicated worktree-builder agent, allowing multiple specs to be implemented in parallel without merge collisions</li>
+    <li>BDD scenarios in Reqnroll as the executable contract between spec and code. <code>.feature</code> files drove Playwright through a glue layer; a feature was not "done" until its scenarios passed</li>
+    <li>Conventional Commits and a mandatory build+test gate after every master merge. The rule went into CLAUDE.md</li>
+</ul>
+
+<h3>Oracle Testing Against the Legacy</h3>
+<p>
+    Specs said what the new system should do. The legacy app was the source of truth for what it actually did. The tooling that bridged them:
+</p>
+<ul>
+    <li>Built purpose-specific applications that probed the legacy WebForms system as a black-box behavioural oracle, then wrapped those tools as Claude Code skills so any agent could call them inside its own loop</li>
+    <li><strong>Visual Oracle Pattern</strong>: Playwright captured screenshots of the new Blazor output and pixel-compared them against legacy screenshots. Behavioural parity was measured, not assumed</li>
+    <li>Testcontainers + Podman stood up real SQL Server instances for integration tests, so the same Dapper / EF Core code paths exercised in production were exercised in CI</li>
+    <li>Hard rule we kept: domain entity <code>Create</code> methods never invented validation rules absent from the legacy app. The legacy was authoritative, even when its rules were ugly</li>
+</ul>
+
+<h3>Compiler-Enforced Guardrails</h3>
+<p>
+    Agents were fast but drifted. The fix was not more prompting. It was build-time enforcement.
+</p>
+<ul>
+    <li><strong>TreatWarningsAsErrors globally</strong>: a single yellow squiggly failed the build. The ratchet only went one way</li>
+    <li>A suite of <strong>custom Roslyn analysers</strong> turned house style into compile errors. No primitives in Domain APIs (Value Objects required). No <code>var</code> (explicit types only). No <code>Repository</code> / <code>Database</code> / <code>Dapper</code> / <code>EF</code> in port names (capability names only). Bans on ambient statics and implementation-revealing fully-qualified names</li>
+    <li><strong>NetArchTest</strong> on top, enforcing hexagonal layer dependencies: Razor could not reach into Application or Domain, Domain had no infrastructure imports, the Anti-Corruption Layer was the only path between external schemas and domain types</li>
+    <li>Combined with off-the-shelf analysers and a pre-commit hook running <code>dotnet build</code>, an agent could not quietly skip a step. If it forgot, the build failed and the worktree refused to commit</li>
+</ul>
+
+<h3>Hexagonal Architecture &amp; CQRS</h3>
+<p>
+    The architecture was what made the rebuild tractable.
+</p>
+<ul>
+    <li>Hexagonal arrangement: ports &amp; adapters with strict layer policing, MediatR-based CQRS (one handler per command/query), <code>Result&lt;T&gt;</code> for explicit failure modes, and a Web-layer <strong>ViewService Facade</strong> between every Razor component and the Application layer</li>
+    <li><strong>Anti-Corruption Layer</strong> as <code>ExternalRow &rarr; Translator &rarr; Domain</code>. The legacy database schema never leaked past Infrastructure, so the new domain model was free to be clean</li>
+    <li>Dapper for legacy stored-procedure adapters, EF Core for the internal database, SQL Server FileTable for the editor image library, Polly for retry and circuit-breaker on the external DB connection</li>
+</ul>
+
+<h2>Key Contributions</h2>
+<ul>
+    <li>Designed the hexagonal architecture and the agent collaboration model that produced it</li>
+    <li>Built the worktree-per-feature parallel execution workflow that let one engineer ship at multi-engineer pace</li>
+    <li>Authored the SpecKit specifications driving the migration end to end</li>
+    <li>Wrote the custom Roslyn analyser suite that turned architectural intent into build-time enforcement</li>
+    <li>Established the Visual Oracle Pattern and the legacy-probing skills that gave the migration measurable behavioural parity</li>
+    <li>Captured the persistent memory rules so the next session started smarter than the last</li>
+    <li>Delivered the rebuild in 6 weeks against a prior estimate of more than twice that</li>
+</ul>
+
+<h2>Technologies &amp; Skills</h2>
+<ul>
+    <li>C#, .NET 9, Blazor Server + SSR, Razor Components</li>
+    <li>MediatR (CQRS), FluentValidation, Result&lt;T&gt;</li>
+    <li>Dapper, EF Core, SQL Server FileTable, Polly</li>
+    <li>Reqnroll (SpecFlow), Playwright, xUnit, NetArchTest, Testcontainers + Podman</li>
+    <li>Custom Roslyn analysers, TreatWarningsAsErrors, pre-commit hooks</li>
+    <li>Claude Code: sub-agents, git worktrees, custom slash commands, context-mode plugin (<code>ctx</code>), SpecKit, persistent memory</li>
+    <li>Git worktrees, Conventional Commits, PowerShell</li>
+    <li>Self-hosted Azure DevOps Server for CI/CD pipelines</li>
+    <li>Hexagonal architecture, ports &amp; adapters, Anti-Corruption Layer, big-bang migration</li>
+</ul>
+{% endblock %}
+
+{% block project_footer %}
+<p></p>
+{% endblock %}

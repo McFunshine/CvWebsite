@@ -29,6 +29,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Abel&amp;display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/static/css/style.css">
 
+    {% block head_extra %}{% endblock %}
+
     <!-- Structured Data -->
     <script type="application/ld+json">
     {
@@ -90,6 +92,7 @@
                 <div class="nav-dropdown">
                     <button type="button" class="nav-link nav-dropdown-toggle">Projects</button>
                     <div class="nav-dropdown-menu">
+                        <a href="/projects/lve.html">LVE</a>
                         <a href="/projects/klinkendetaal.html">Klinkende Taal</a>
                         <a href="/projects/podmorph.html">Podmorph</a>
                         <a href="/projects/vvz-app.html">VVZ App</a>

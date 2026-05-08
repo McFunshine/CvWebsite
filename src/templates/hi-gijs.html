@@ -1,0 +1,41 @@
+{% extends "_base.html" %}
+
+{% block title %}Hi Gijs - Paul Spencer{% endblock %}
+{% block meta_description %}A personal note for Gijs at OpenUp.{% endblock %}
+{% block canonical_url %}https://spencerpj.com/hi-gijs.html{% endblock %}
+{% block og_url %}https://spencerpj.com/hi-gijs.html{% endblock %}
+{% block og_title %}Hi Gijs{% endblock %}
+{% block og_description %}A personal note from Paul Spencer.{% endblock %}
+
+{% block head_extra %}<meta name="robots" content="noindex, nofollow">{% endblock %}
+
+{% block content %}
+<div class="contact-page">
+    <section class="intro">
+        <h1>Hi Gijs,</h1>
+        <div class="profile-container">
+            <div class="profile-section">
+                <div class="profile-content">
+                    <img src="/static/img/photogravure.png" alt="Paul Spencer" class="profile-image">
+                    <div class="intro-text">
+                        <p class="tagline">Saw OpenUp's growth and your funding round earlier this year - congratulations.</p>
+                        <p>I'm an AI engineer based in Amsterdam, available from August, and I think your matching and triage layer would be a fun place to apply what I do. Last year I fine-tuned an LLM to write B1-level Dutch so that government letters became readable for 80% of the population - the kind of work where the model needs to genuinely meet people where they are.</p>
+                        <p class="availability">Quick coffee? <a href="mailto:spencerpj@gmail.com?subject=Coffee%3F">spencerpj@gmail.com</a></p>
+                        <p>— Paul Spencer</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about-me">
+        <h2>While you're here</h2>
+        <p>
+            Have a look around - the nav at the top has the highlights. <a href="/about.html">About Me</a> is the story of how a stockbroker support job turned into thirty years of building software. <a href="/#portfolio">Projects</a> covers the recent AI work (Klinkende Taal, Podmorph) alongside the Java, Kotlin and .NET systems behind it. <a href="/cvs.html">CV</a> has the formal version - in English or Dutch, tailored by stack.
+        </p>
+        <p>
+            If anything sparks a question, the email above goes straight to me.
+        </p>
+    </section>
+</div>
+{% endblock %}
